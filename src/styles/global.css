@@ -199,3 +199,322 @@ img {
     --ss-section-padding: 4rem 1rem;
   }
 }
+
+/* Hero section */
+
+.ss-hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 2rem 1.5rem 5rem;
+}
+
+.ss-hero-glow {
+  position: absolute;
+  z-index: 0;
+  border-radius: var(--ss-radius-full);
+  pointer-events: none;
+  filter: blur(120px);
+}
+
+.ss-hero-glow-one {
+  top: -12rem;
+  left: 18%;
+  width: 34rem;
+  height: 34rem;
+  background: rgba(214, 168, 79, 0.16);
+}
+
+.ss-hero-glow-two {
+  right: -14rem;
+  top: 12rem;
+  width: 28rem;
+  height: 28rem;
+  background: rgba(242, 213, 138, 0.1);
+}
+
+.ss-navbar {
+  position: relative;
+  z-index: 3;
+  width: min(100%, var(--ss-container));
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.ss-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.ss-brand-mark {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-full);
+  display: grid;
+  place-items: center;
+  font-family: var(--ss-font-display);
+  font-size: 1.15rem;
+  color: var(--ss-gold-light);
+  background:
+    radial-gradient(circle at 30% 20%, rgba(242, 213, 138, 0.18), transparent 60%),
+    rgba(255, 247, 232, 0.035);
+}
+
+.ss-brand-text {
+  font-family: var(--ss-font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ss-text);
+}
+
+.ss-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  color: var(--ss-text-muted);
+  font-size: 0.9rem;
+}
+
+.ss-nav-links a {
+  transition: color var(--ss-transition);
+}
+
+.ss-nav-links a:hover {
+  color: var(--ss-gold-light);
+}
+
+.ss-hero-grid {
+  position: relative;
+  z-index: 2;
+  width: min(100%, var(--ss-container));
+  margin: 0 auto;
+  padding-top: 6rem;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.ss-hero-content {
+  max-width: 680px;
+}
+
+.ss-hero-title {
+  margin-top: 1.1rem;
+  max-width: 740px;
+  font-size: clamp(3.3rem, 7.8vw, 6.8rem);
+}
+
+.ss-hero-text {
+  margin-top: 1.6rem;
+  max-width: 620px;
+  font-size: 1.08rem;
+}
+
+.ss-hero-actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.ss-hero-meta {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 620px;
+}
+
+.ss-hero-meta div {
+  border-left: 1px solid var(--ss-border);
+  padding-left: 1rem;
+}
+
+.ss-hero-meta strong {
+  display: block;
+  color: var(--ss-text);
+  font-family: var(--ss-font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.ss-hero-meta span {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--ss-text-muted);
+  font-size: 0.85rem;
+}
+
+.ss-hero-visual {
+  position: relative;
+  min-height: 34rem;
+}
+
+.ss-hero-frame {
+  position: relative;
+  border: 1px solid var(--ss-border);
+  border-radius: 48% 48% 2.4rem 2.4rem;
+  padding: 1rem;
+  background:
+    linear-gradient(145deg, rgba(214, 168, 79, 0.18), rgba(255, 247, 232, 0.035)),
+    rgba(255, 247, 232, 0.035);
+  box-shadow: var(--ss-shadow-gold);
+}
+
+.ss-hero-frame::before {
+  content: "";
+  position: absolute;
+  inset: 1.6rem;
+  border: 1px solid rgba(242, 213, 138, 0.26);
+  border-radius: 46% 46% 1.8rem 1.8rem;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ss-hero-image {
+  min-height: 34rem;
+  border-radius: 45% 45% 1.7rem 1.7rem;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(5, 4, 3, 0.05), rgba(5, 4, 3, 0.78)),
+    radial-gradient(circle at 50% 20%, rgba(242, 213, 138, 0.3), transparent 16rem),
+    linear-gradient(135deg, #6c4b22 0%, #16110c 48%, #050403 100%);
+}
+
+.ss-hero-image::before {
+  content: "";
+  position: absolute;
+  inset: 1rem;
+  border-radius: 45% 45% 1.7rem 1.7rem;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255, 247, 232, 0.18), transparent 7rem),
+    radial-gradient(circle at 30% 55%, rgba(214, 168, 79, 0.16), transparent 8rem);
+  pointer-events: none;
+}
+
+.ss-hero-badge {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  border: 1px solid rgba(242, 213, 138, 0.28);
+  border-radius: var(--ss-radius-md);
+  padding: 1.1rem;
+  background: rgba(5, 4, 3, 0.68);
+  backdrop-filter: blur(18px);
+}
+
+.ss-hero-badge span {
+  display: block;
+  color: var(--ss-text-muted);
+  font-size: 0.9rem;
+}
+
+.ss-hero-badge strong {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--ss-font-display);
+  color: var(--ss-gold-light);
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.ss-floating-card {
+  position: absolute;
+  z-index: 4;
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-full);
+  padding: 0.85rem 1.15rem;
+  background: rgba(5, 4, 3, 0.78);
+  color: var(--ss-gold-light);
+  font-family: var(--ss-font-display);
+  font-size: 1.05rem;
+  box-shadow: var(--ss-shadow-soft);
+  backdrop-filter: blur(16px);
+}
+
+.ss-floating-card-one {
+  left: -1.2rem;
+  top: 8rem;
+}
+
+.ss-floating-card-two {
+  right: -1rem;
+  bottom: 5rem;
+}
+
+@media (max-width: 980px) {
+  .ss-nav-links {
+    display: none;
+  }
+
+  .ss-hero-grid {
+    grid-template-columns: 1fr;
+    padding-top: 4.5rem;
+  }
+
+  .ss-hero-content {
+    max-width: 100%;
+  }
+
+  .ss-hero-visual {
+    max-width: 520px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .ss-hero {
+    padding: 1.3rem 1rem 4rem;
+  }
+
+  .ss-brand-text {
+    font-size: 1.05rem;
+  }
+
+  .ss-nav-cta {
+    display: none;
+  }
+
+  .ss-hero-title {
+    font-size: clamp(3rem, 17vw, 4.6rem);
+  }
+
+  .ss-hero-actions {
+    flex-direction: column;
+  }
+
+  .ss-hero-actions .ss-button {
+    width: 100%;
+  }
+
+  .ss-hero-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .ss-hero-frame,
+  .ss-hero-image {
+    border-radius: 2rem;
+  }
+
+  .ss-hero-frame::before {
+    border-radius: 1.5rem;
+  }
+
+  .ss-hero-image {
+    min-height: 27rem;
+  }
+
+  .ss-floating-card {
+    display: none;
+  }
+}
