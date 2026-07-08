@@ -1,101 +1,122 @@
 ---
 import '../styles/global.css';
 
-const businessName = "Nombre del Cliente";
+const businessName = "EG Eventos";
 const whatsapp = "50499999999";
+const brandPhrase = "Nuestra pasión, tu satisfacción";
 ---
 
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Cobertura profesional de eventos con fotografía, video y contenido publicitario para redes sociales."
+      content="EG Eventos — planificación, decoración y coordinación de eventos elegantes. Bodas, graduaciones y celebraciones sociales cuidadas en cada detalle."
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{businessName} | Eventos</title>
+    <title>{businessName} — Wedding & Events Planners</title>
   </head>
 
   <body>
     <main class="ss-page">
       <section class="ss-hero">
-  <div class="ss-hero-pattern"></div>
-  <div class="ss-hero-glow ss-hero-glow-one"></div>
-  <div class="ss-hero-glow ss-hero-glow-two"></div>
+        <div class="ss-hero-pattern"></div>
+        <div class="ss-hero-glow ss-hero-glow-one"></div>
+        <div class="ss-hero-glow ss-hero-glow-two"></div>
 
-  <nav class="ss-navbar">
-    <a href="#" class="ss-brand">
-      <span class="ss-brand-mark">EG</span>
-      <span class="ss-brand-text">Eventos</span>
-    </a>
+        <nav class="ss-navbar">
+          <a href="#" class="ss-brand">
+            <span class="ss-brand-mark">EG</span>
+            <span class="ss-brand-text">Eventos</span>
+          </a>
 
-    <div class="ss-nav-links">
-      <a href="#servicios">Servicios</a>
-      <a href="#galeria">Galería</a>
-      <a href="#contacto">Contacto</a>
-    </div>
+          <div class="ss-nav-links">
+            <a href="#servicios">Servicios</a>
+            <a href="#galeria">Galería</a>
+            <a href="#contacto">Contacto</a>
+          </div>
 
-    <a href={`https://wa.me/${whatsapp}`} class="ss-button ss-button-primary ss-nav-cta">
-      Cotizar evento
-    </a>
-  </nav>
+          <a href={`https://wa.me/${whatsapp}`} class="ss-button ss-button-primary ss-nav-cta">
+            Cotizar evento
+          </a>
+        </nav>
 
-  <div class="ss-hero-grid">
-    <div class="ss-hero-content">
-      <p class="ss-eyebrow">Wedding & Events Planners</p>
+        <div class="ss-hero-grid">
+          <div class="ss-hero-content">
+            <p class="ss-eyebrow">
+              <span class="ss-eyebrow-line"></span>
+              Wedding &amp; Events Planners
+            </p>
 
-      <h1 class="ss-display-title ss-hero-title">
-        Hacemos de cada evento un recuerdo inolvidable.
-      </h1>
+            <h1 class="ss-display-title ss-hero-title">
+              Hacemos de cada evento
+              <em>un recuerdo inolvidable</em>
+            </h1>
 
-      <p class="ss-body-text ss-hero-text">
-        Diseñamos, decoramos y coordinamos eventos con estilo y elegancia.
-        Bodas, graduaciones, baby showers, cumpleaños y celebraciones especiales
-        creadas con atención a cada detalle.
-      </p>
+            <p class="ss-body-text ss-hero-text">
+              Planificamos, decoramos y coordinamos celebraciones elegantes de principio
+              a fin. De bodas y graduaciones a eventos sociales, cuidamos cada detalle
+              para que tú solo te dediques a disfrutar.
+            </p>
 
-      <div class="ss-hero-actions">
-        <a href={`https://wa.me/${whatsapp}`} class="ss-button ss-button-primary">
-          Cotizar con nosotros
-        </a>
+            <p class="ss-hero-signature">{brandPhrase}</p>
 
-        <a href="#servicios" class="ss-button ss-button-secondary">
-          Ver servicios
-        </a>
-      </div>
-    </div>
+            <div class="ss-hero-actions">
+              <a href={`https://wa.me/${whatsapp}`} class="ss-button ss-button-primary">
+                Cotizar mi evento
+              </a>
 
-    <div class="ss-hero-showcase" aria-label="Tipos de eventos">
-      <article class="ss-arch-card ss-arch-card-one">
-  <div class="ss-arch-image ss-photo-bodas">
-    <span class="ss-arch-label">Bodas</span>
-  </div>
-  <p>Bodas</p>
-</article>
+              <a href="#servicios" class="ss-button ss-button-secondary">
+                Ver servicios
+              </a>
+            </div>
+          </div>
 
-<article class="ss-arch-card ss-arch-card-two">
-  <div class="ss-arch-image ss-photo-graduaciones">
-    <span class="ss-arch-label">Graduaciones</span>
-  </div>
-  <p>Graduaciones</p>
-</article>
+          <div class="ss-hero-showcase" aria-label="Tipos de eventos">
+            <article class="ss-arch-card ss-arch-card-left">
+              <div class="ss-arch-shell">
+                <div class="ss-arch-rim">
+                  <div class="ss-arch-image ss-photo-graduaciones">
+                    <span class="ss-arch-label">Graduaciones</span>
+                  </div>
+                </div>
+                <div class="ss-arch-plinth">
+                  <div class="ss-arch-plinth-top"></div>
+                  <p>Graduaciones</p>
+                </div>
+              </div>
+            </article>
 
-<article class="ss-arch-card ss-arch-card-three">
-  <div class="ss-arch-image ss-photo-sociales">
-    <span class="ss-arch-label">Sociales</span>
-  </div>
-  <p>Sociales</p>
-</article>
+            <article class="ss-arch-card ss-arch-card-feature">
+              <div class="ss-arch-shell">
+                <div class="ss-arch-rim">
+                  <div class="ss-arch-image ss-photo-bodas">
+                    <span class="ss-arch-label">Bodas</span>
+                  </div>
+                </div>
+                <div class="ss-arch-plinth">
+                  <div class="ss-arch-plinth-top"></div>
+                  <p>Bodas</p>
+                </div>
+              </div>
+            </article>
 
-      
-    </div>
-  </div>
-
-  
-</section>
-    </main>
-  </body>
-</html>
+            <article class="ss-arch-card ss-arch-card-right">
+              <div class="ss-arch-shell">
+                <div class="ss-arch-rim">
+                  <div class="ss-arch-image ss-photo-sociales">
+                    <span class="ss-arch-label">Sociales</span>
+                  </div>
+                </div>
+                <div class="ss-arch-plinth">
+                  <div class="ss-arch-plinth-top"></div>
+                  <p>Sociales</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
   </body>
 </html>
