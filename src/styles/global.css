@@ -1798,3 +1798,112 @@ img {
     transform: none;
   }
 }
+
+/* ==========================================================================
+   Social feed
+   ========================================================================== */
+
+.ss-social {
+  padding: clamp(4rem, 8vw, 6rem) 1.5rem;
+  border-top: 1px solid rgba(214, 168, 79, 0.08);
+  background: #050403;
+}
+
+.ss-social-inner {
+  width: min(100%, var(--ss-hero-container));
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ss-social-header {
+  max-width: 40rem;
+  margin: 0 auto clamp(2rem, 4vw, 3rem);
+}
+
+.ss-social-eyebrow {
+  justify-content: center;
+}
+
+.ss-social-title {
+  margin-top: 1.1rem;
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  line-height: 1.16;
+}
+
+.ss-social-title em {
+  font-style: italic;
+  color: var(--ss-gold-light);
+}
+
+.ss-social-intro {
+  margin: 1rem auto 0;
+  max-width: 32rem;
+  color: var(--ss-text-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.ss-social-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.6rem;
+}
+
+.ss-social-item {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--ss-radius-sm);
+  border: 1px solid var(--ss-border-soft);
+  background-color: #130f0b;
+  background-size: cover;
+  background-position: center;
+  transition: transform var(--ss-transition);
+}
+
+.ss-social-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 4, 3, 0.18);
+  transition: background var(--ss-transition);
+}
+
+.ss-social-item:hover {
+  transform: translateY(-3px);
+}
+
+.ss-social-item:hover::after {
+  background: rgba(214, 168, 79, 0.12);
+}
+
+.ss-social-links {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.6rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ss-text-muted);
+}
+
+.ss-social-links a {
+  transition: color var(--ss-transition);
+}
+
+.ss-social-links a:hover {
+  color: var(--ss-gold-light);
+}
+
+@media (max-width: 780px) {
+  .ss-social-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 460px) {
+  .ss-social-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
