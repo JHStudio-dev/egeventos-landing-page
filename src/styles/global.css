@@ -1291,12 +1291,27 @@ img {
 
 .ss-cta {
   position: relative;
+  overflow: hidden;
   padding: clamp(5rem, 9vw, 8rem) 1.5rem;
-  background: linear-gradient(180deg, #060504 0%, #050403 100%);
+  background-color: #080605;
+  background-image: url("/event-cta.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.ss-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, rgba(5, 4, 3, 0.82) 0%, rgba(5, 4, 3, 0.68) 50%, rgba(5, 4, 3, 0.9) 100%);
+  pointer-events: none;
 }
 
 .ss-cta-card {
   position: relative;
+  z-index: 1;
   width: min(100%, 54rem);
   margin: 0 auto;
   padding: clamp(2.75rem, 6vw, 4.75rem) clamp(1.5rem, 5vw, 4rem);
@@ -1304,11 +1319,13 @@ img {
   border: 1px solid var(--ss-border);
   border-radius: var(--ss-radius-lg);
   background:
-    radial-gradient(circle at 50% 0%, rgba(214, 168, 79, 0.16), transparent 60%),
-    linear-gradient(180deg, rgba(255, 247, 232, 0.045), rgba(255, 247, 232, 0.012));
+    radial-gradient(circle at 50% 0%, rgba(214, 168, 79, 0.18), transparent 60%),
+    linear-gradient(180deg, rgba(10, 8, 6, 0.74), rgba(8, 6, 4, 0.6));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   box-shadow:
-    0 30px 90px rgba(0, 0, 0, 0.5),
-    0 0 90px rgba(214, 168, 79, 0.07),
+    0 30px 90px rgba(0, 0, 0, 0.55),
+    0 0 90px rgba(214, 168, 79, 0.08),
     inset 0 1px 0 rgba(255, 247, 232, 0.08);
 }
 
@@ -1380,6 +1397,12 @@ img {
 
 .ss-cta-socials a:hover {
   color: var(--ss-gold-light);
+}
+
+@media (max-width: 820px), (prefers-reduced-motion: reduce) {
+  .ss-cta {
+    background-attachment: scroll;
+  }
 }
 
 /* ==========================================================================
