@@ -1183,3 +1183,100 @@ img {
     grid-row: 3 / 4;
   }
 }
+
+/* ==========================================================================
+   Contact CTA
+   ========================================================================== */
+
+.ss-cta {
+  position: relative;
+  padding: clamp(5rem, 9vw, 8rem) 1.5rem;
+  background: linear-gradient(180deg, #060504 0%, #050403 100%);
+}
+
+.ss-cta-card {
+  position: relative;
+  width: min(100%, 54rem);
+  margin: 0 auto;
+  padding: clamp(2.75rem, 6vw, 4.75rem) clamp(1.5rem, 5vw, 4rem);
+  text-align: center;
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(214, 168, 79, 0.16), transparent 60%),
+    linear-gradient(180deg, rgba(255, 247, 232, 0.045), rgba(255, 247, 232, 0.012));
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.5),
+    0 0 90px rgba(214, 168, 79, 0.07),
+    inset 0 1px 0 rgba(255, 247, 232, 0.08);
+}
+
+.ss-cta-card::before {
+  content: "";
+  position: absolute;
+  inset: 0.7rem;
+  border: 1px solid rgba(242, 213, 138, 0.22);
+  border-radius: calc(var(--ss-radius-lg) - 0.5rem);
+  pointer-events: none;
+}
+
+.ss-cta-eyebrow {
+  justify-content: center;
+}
+
+.ss-cta-title {
+  margin-top: 1.25rem;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1.1;
+}
+
+.ss-cta-title em {
+  font-style: italic;
+  color: var(--ss-gold-light);
+}
+
+.ss-cta-text {
+  margin: 1.35rem auto 0;
+  max-width: 34rem;
+  color: var(--ss-text-soft);
+  font-size: 1.04rem;
+  line-height: 1.75;
+}
+
+.ss-cta-button {
+  margin-top: 2.1rem;
+  padding: 1rem 2rem;
+}
+
+.ss-cta-phone {
+  display: block;
+  margin-top: 1.35rem;
+  font-family: var(--ss-font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  color: var(--ss-gold-light);
+  transition: color var(--ss-transition);
+}
+
+.ss-cta-phone:hover {
+  color: var(--ss-ivory);
+}
+
+.ss-cta-socials {
+  margin-top: 1.75rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.6rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ss-text-muted);
+}
+
+.ss-cta-socials a {
+  transition: color var(--ss-transition);
+}
+
+.ss-cta-socials a:hover {
+  color: var(--ss-gold-light);
+}
