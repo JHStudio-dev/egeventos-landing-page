@@ -839,11 +839,6 @@ img {
   line-height: 1.12;
 }
 
-.ss-services-title em {
-  font-style: italic;
-  color: var(--ss-gold-light);
-}
-
 .ss-services-intro {
   margin: 1.2rem 0 0;
   max-width: 34rem;
@@ -1009,11 +1004,6 @@ img {
   line-height: 1.12;
 }
 
-.ss-events-title em {
-  font-style: italic;
-  color: var(--ss-gold-light);
-}
-
 .ss-events-intro {
   margin: 1.2rem 0 0;
   max-width: 36rem;
@@ -1142,11 +1132,6 @@ img {
   margin-top: 1.2rem;
   font-size: clamp(2rem, 3.4vw, 2.85rem);
   line-height: 1.12;
-}
-
-.ss-gallery-title em {
-  font-style: italic;
-  color: var(--ss-gold-light);
 }
 
 .ss-gallery-intro {
@@ -1603,11 +1588,6 @@ img {
   line-height: 1.12;
 }
 
-.ss-process-title em {
-  font-style: italic;
-  color: var(--ss-gold-light);
-}
-
 .ss-process-intro {
   margin: 1.2rem 0 0;
   max-width: 34rem;
@@ -1737,11 +1717,6 @@ img {
   margin-top: 1.2rem;
   font-size: clamp(2rem, 3.4vw, 2.85rem);
   line-height: 1.12;
-}
-
-.ss-about-title em {
-  font-style: italic;
-  color: var(--ss-gold-light);
 }
 
 .ss-about-text {
@@ -1879,10 +1854,6 @@ img {
 .ss-social-header {
   max-width: 40rem;
   margin: 0 auto clamp(2rem, 4vw, 3rem);
-}
-
-.ss-social-eyebrow {
-  justify-content: center;
 }
 
 .ss-social-title {
