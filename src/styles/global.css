@@ -1612,3 +1612,105 @@ img {
     background-attachment: scroll;
   }
 }
+
+/* ==========================================================================
+   About
+   ========================================================================== */
+
+.ss-about {
+  padding: clamp(5rem, 9vw, 8rem) 1.5rem;
+  border-top: 1px solid rgba(214, 168, 79, 0.08);
+  background: linear-gradient(180deg, #060504 0%, #0a0806 100%);
+}
+
+.ss-about-inner {
+  width: min(100%, var(--ss-container));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.82fr 1fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.ss-about-photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--ss-radius-md);
+  border: 1px solid var(--ss-border);
+  background-color: #130f0b;
+  background-image:
+    radial-gradient(circle at 50% 35%, rgba(214, 168, 79, 0.12), transparent 60%);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.ss-about-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0.55rem;
+  border: 1px solid rgba(242, 213, 138, 0.22);
+  border-radius: calc(var(--ss-radius-md) - 0.35rem);
+  pointer-events: none;
+}
+
+.ss-about-hint {
+  font-family: var(--ss-font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: rgba(242, 213, 138, 0.55);
+}
+
+.ss-photo-founder {
+  background-image:
+    radial-gradient(circle at 50% 35%, rgba(214, 168, 79, 0.12), transparent 60%),
+    url("/about-founder.jpg");
+}
+
+.ss-about-title {
+  margin-top: 1.2rem;
+  font-size: clamp(2rem, 3.4vw, 2.85rem);
+  line-height: 1.12;
+}
+
+.ss-about-title em {
+  font-style: italic;
+  color: var(--ss-gold-light);
+}
+
+.ss-about-text {
+  margin: 1.4rem 0 0;
+  max-width: 34rem;
+  color: var(--ss-text-soft);
+  font-size: 1.03rem;
+  line-height: 1.85;
+}
+
+.ss-about-signature {
+  margin: 1.5rem 0 0;
+  font-family: var(--ss-font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--ss-gold-light);
+}
+
+.ss-about-cta {
+  margin-top: 2rem;
+}
+
+@media (max-width: 780px) {
+  .ss-about-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .ss-about-photo {
+    max-width: 22rem;
+    margin: 0 auto;
+  }
+}
