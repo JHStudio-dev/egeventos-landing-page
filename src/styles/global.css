@@ -197,6 +197,7 @@ img {
 .ss-hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   padding: 1.9rem 1.5rem 0;
   overflow: hidden;
   background:
@@ -340,7 +341,7 @@ img {
   z-index: 3;
   width: min(100%, var(--ss-hero-container));
   margin: 0 auto;
-  padding: clamp(3.5rem, 7vw, 6rem) 0 4rem;
+  padding: clamp(2.5rem, 5vw, 4rem) 0 3rem;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
   gap: clamp(3rem, 5.5vw, 6rem);
@@ -348,18 +349,20 @@ img {
 }
 
 .ss-hero-content {
-  max-width: 34rem;
+  max-width: 38rem;
 }
 
 .ss-hero-title {
-  margin-top: 1.5rem;
-  font-size: clamp(2.7rem, 4.9vw, 4.9rem);
+  margin-top: 1.4rem;
+  font-size: clamp(2.3rem, 3.6vw, 3.1rem);
+  line-height: 1.08;
   text-wrap: balance;
 }
 
 .ss-hero-title em {
   display: block;
-  margin-top: 0.1em;
+  margin-top: 0.08em;
+  padding-bottom: 0.08em;
   font-style: italic;
   font-weight: 500;
   color: var(--ss-gold-light);
@@ -367,28 +370,10 @@ img {
 }
 
 .ss-hero-text {
-  margin-top: 1.6rem;
-  max-width: 32rem;
+  margin-top: 1.5rem;
+  max-width: 34rem;
   color: var(--ss-text-soft);
   font-size: 1.03rem;
-}
-
-.ss-hero-signature {
-  margin: 1.35rem 0 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  font-family: var(--ss-font-display);
-  font-style: italic;
-  font-size: 1.18rem;
-  color: var(--ss-gold-light);
-}
-
-.ss-hero-signature::before {
-  content: "";
-  width: 1.6rem;
-  height: 1px;
-  background: var(--ss-gold);
 }
 
 .ss-hero-actions {
@@ -493,7 +478,7 @@ img {
 
 .ss-arch-image {
   position: relative;
-  height: 27rem;
+  height: 23rem;
   overflow: hidden;
   border-radius: 7.75rem 7.75rem 0.7rem 0.7rem;
   background-color: #130f0b;
@@ -602,6 +587,38 @@ img {
     0 14px 30px rgba(0, 0, 0, 0.28);
 }
 
+/* Entrance ------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .ss-hero-content > *,
+  .ss-arch-card {
+    opacity: 0;
+    animation: ss-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .ss-hero-title { animation-delay: 0.08s; }
+  .ss-hero-text { animation-delay: 0.16s; }
+  .ss-hero-actions { animation-delay: 0.24s; }
+
+  .ss-arch-card {
+    animation-name: ss-fade;
+  }
+
+  .ss-arch-card-left { animation-delay: 0.32s; }
+  .ss-arch-card-feature { animation-delay: 0.42s; }
+  .ss-arch-card-right { animation-delay: 0.52s; }
+
+  @keyframes ss-rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @keyframes ss-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
 /* ==========================================================================
    Responsive
    ========================================================================== */
@@ -651,7 +668,7 @@ img {
   }
 
   .ss-hero-title {
-    font-size: clamp(2.4rem, 9vw, 3.4rem);
+    font-size: clamp(2rem, 8vw, 2.6rem);
   }
 
   .ss-hero-actions {
@@ -697,7 +714,7 @@ img {
   }
 
   .ss-arch-image {
-    height: 21rem;
+    height: 18.5rem;
     border-radius: 5.9rem 5.9rem 0.7rem 0.7rem;
   }
 
