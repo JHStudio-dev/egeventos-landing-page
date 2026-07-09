@@ -906,3 +906,112 @@ img {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   Event types
+   ========================================================================== */
+
+.ss-types {
+  position: relative;
+  padding: clamp(5rem, 9vw, 8rem) 1.5rem;
+  border-top: 1px solid rgba(214, 168, 79, 0.08);
+  background: linear-gradient(180deg, #060504 0%, #0b0806 100%);
+}
+
+.ss-types-inner {
+  width: min(100%, var(--ss-container));
+  margin: 0 auto;
+}
+
+.ss-types-header {
+  max-width: 42rem;
+  margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
+}
+
+.ss-types-title {
+  margin-top: 1.2rem;
+  font-size: clamp(2rem, 3.4vw, 2.85rem);
+  line-height: 1.12;
+}
+
+.ss-types-title em {
+  font-style: italic;
+  color: var(--ss-gold-light);
+}
+
+.ss-types-intro {
+  margin: 1.2rem 0 0;
+  max-width: 36rem;
+  color: var(--ss-text-muted);
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+.ss-types-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ss-border-soft);
+}
+
+.ss-type {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "index name meta";
+  align-items: baseline;
+  gap: 1.6rem;
+  padding: 1.55rem 1rem;
+  border-bottom: 1px solid var(--ss-border-soft);
+  transition: background var(--ss-transition), padding var(--ss-transition);
+}
+
+.ss-type:hover {
+  padding-left: 1.5rem;
+  background: linear-gradient(90deg, rgba(214, 168, 79, 0.07), transparent 70%);
+}
+
+.ss-type-index {
+  grid-area: index;
+  font-family: var(--ss-font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ss-gold);
+}
+
+.ss-type-name {
+  grid-area: name;
+  margin: 0;
+  font-family: var(--ss-font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ss-text);
+  transition: color var(--ss-transition);
+}
+
+.ss-type:hover .ss-type-name {
+  color: var(--ss-gold-light);
+}
+
+.ss-type-meta {
+  grid-area: meta;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  color: var(--ss-text-muted);
+  text-align: right;
+}
+
+@media (max-width: 560px) {
+  .ss-type {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "index name"
+      ".     meta";
+    gap: 0.4rem 1.1rem;
+  }
+
+  .ss-type-meta {
+    margin-top: 0.35rem;
+    text-align: left;
+  }
+}
