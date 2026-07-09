@@ -19,6 +19,19 @@ const phone = "8912-3226";
 
   <body>
     <main class="ss-page">
+      <div class="ss-stickybar" id="ss-stickybar">
+        <a href="#" class="ss-stickybar-logo">EG Eventos</a>
+        <nav class="ss-stickybar-links">
+          <a href="#servicios">Servicios</a>
+          <a href="#galeria">Galería</a>
+          <a href="#sobre">Sobre mí</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <a href={`https://wa.me/${whatsapp}`} class="ss-button ss-button-primary ss-stickybar-cta">
+          Cotizar evento
+        </a>
+      </div>
+
       <section class="ss-hero">
         <div class="ss-hero-pattern"></div>
         <div class="ss-hero-glow ss-hero-glow-one"></div>
@@ -36,6 +49,7 @@ const phone = "8912-3226";
             <div class="ss-nav-links">
               <a href="#servicios">Servicios</a>
               <a href="#galeria">Galería</a>
+              <a href="#sobre">Sobre mí</a>
               <a href="#contacto">Contacto</a>
             </div>
 
@@ -436,5 +450,17 @@ const phone = "8912-3226";
         <span>Desarrollado por Scale Studio</span>
       </div>
     </footer>
+
+    <script>
+      const bar = document.getElementById("ss-stickybar");
+      const hero = document.querySelector(".ss-hero");
+      if (bar && hero) {
+        const io = new IntersectionObserver(
+          ([entry]) => bar.classList.toggle("is-visible", !entry.isIntersecting),
+          { threshold: 0 }
+        );
+        io.observe(hero);
+      }
+    </script>
   </body>
 </html>
