@@ -908,38 +908,35 @@ img {
 }
 
 /* ==========================================================================
-   Event types
+   Event bands
    ========================================================================== */
 
-.ss-types {
+.ss-events {
   position: relative;
-  padding: clamp(5rem, 9vw, 8rem) 1.5rem;
+  padding: clamp(5rem, 9vw, 7rem) 0;
   border-top: 1px solid rgba(214, 168, 79, 0.08);
   background: linear-gradient(180deg, #060504 0%, #0b0806 100%);
 }
 
-.ss-types-inner {
+.ss-events-header {
   width: min(100%, var(--ss-container));
-  margin: 0 auto;
+  margin: 0 auto clamp(2.75rem, 5vw, 3.75rem);
+  padding: 0 1.5rem;
 }
 
-.ss-types-header {
-  max-width: 42rem;
-  margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
-}
-
-.ss-types-title {
+.ss-events-title {
   margin-top: 1.2rem;
+  max-width: 34rem;
   font-size: clamp(2rem, 3.4vw, 2.85rem);
   line-height: 1.12;
 }
 
-.ss-types-title em {
+.ss-events-title em {
   font-style: italic;
   color: var(--ss-gold-light);
 }
 
-.ss-types-intro {
+.ss-events-intro {
   margin: 1.2rem 0 0;
   max-width: 36rem;
   color: var(--ss-text-muted);
@@ -947,72 +944,98 @@ img {
   line-height: 1.75;
 }
 
-.ss-types-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--ss-border-soft);
+.ss-bands {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(242, 213, 138, 0.22);
 }
 
-.ss-type {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-areas: "index name meta";
-  align-items: baseline;
-  gap: 1.6rem;
-  padding: 1.55rem 1rem;
-  border-bottom: 1px solid var(--ss-border-soft);
-  transition: background var(--ss-transition), padding var(--ss-transition);
+.ss-band {
+  position: relative;
+  min-height: 30rem;
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  overflow: hidden;
+  background-color: #130f0b;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-.ss-type:hover {
-  padding-left: 1.5rem;
-  background: linear-gradient(90deg, rgba(214, 168, 79, 0.07), transparent 70%);
+.ss-band + .ss-band {
+  border-top: 1px solid rgba(242, 213, 138, 0.22);
 }
 
-.ss-type-index {
-  grid-area: index;
+.ss-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(5, 4, 3, 0.88) 0%, rgba(5, 4, 3, 0.5) 45%, rgba(5, 4, 3, 0.2) 100%),
+    linear-gradient(180deg, transparent 45%, rgba(5, 4, 3, 0.72));
+  transition: opacity var(--ss-transition);
+}
+
+.ss-band:hover::after {
+  opacity: 0.82;
+}
+
+.ss-band-content {
+  position: relative;
+  z-index: 2;
+  max-width: 40rem;
+}
+
+.ss-band-index {
   font-family: var(--ss-font-display);
   font-style: italic;
-  font-size: 0.95rem;
-  color: var(--ss-gold);
-}
-
-.ss-type-name {
-  grid-area: name;
-  margin: 0;
-  font-family: var(--ss-font-display);
-  font-size: clamp(1.5rem, 2.6vw, 2rem);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--ss-text);
-  transition: color var(--ss-transition);
-}
-
-.ss-type:hover .ss-type-name {
+  font-size: 1rem;
   color: var(--ss-gold-light);
 }
 
-.ss-type-meta {
-  grid-area: meta;
-  font-size: 0.85rem;
-  letter-spacing: 0.02em;
-  color: var(--ss-text-muted);
-  text-align: right;
+.ss-band-name {
+  margin: 0.5rem 0 0.65rem;
+  font-family: var(--ss-font-display);
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.04;
+  color: var(--ss-ivory);
 }
 
-@media (max-width: 560px) {
-  .ss-type {
-    grid-template-columns: auto 1fr;
-    grid-template-areas:
-      "index name"
-      ".     meta";
-    gap: 0.4rem 1.1rem;
-  }
+.ss-band-text {
+  margin: 0;
+  max-width: 32rem;
+  color: var(--ss-cream);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
 
-  .ss-type-meta {
-    margin-top: 0.35rem;
-    text-align: left;
+.ss-band-bodas {
+  background-image: url("/event-bodas.jpg");
+}
+.ss-band-graduaciones {
+  background-image: url("/event-graduaciones.jpg");
+}
+.ss-band-sociales {
+  background-image: url("/event-sociales.jpg");
+}
+.ss-band-empresariales {
+  background-image: url("/event-empresariales.jpg");
+}
+
+@media (max-width: 820px) {
+  .ss-band {
+    min-height: 22rem;
+    background-attachment: scroll;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ss-band {
+    background-attachment: scroll;
   }
 }
 
