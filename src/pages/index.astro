@@ -41,6 +41,7 @@ const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsa
         <div class="ss-hero-pattern"></div>
         <div class="ss-hero-glow ss-hero-glow-one"></div>
         <div class="ss-hero-glow ss-hero-glow-two"></div>
+        <img class="ss-hero-monogram" src="/logo.png" alt="" aria-hidden="true" />
 
         <header class="ss-header">
           <div class="ss-topbar">
@@ -71,7 +72,14 @@ const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsa
             </p>
 
             <h1 class="ss-display-title ss-hero-title">
-              Hacemos de cada evento
+              Hacemos de cada
+              <span class="ss-rotator" aria-hidden="true">
+                <span class="ss-rotator-word">boda</span>
+                <span class="ss-rotator-word">quinceaños</span>
+                <span class="ss-rotator-word">graduación</span>
+                <span class="ss-rotator-word">celebración</span>
+              </span>
+              <span class="ss-visually-hidden">celebración</span>
               <em>un recuerdo inolvidable</em>
             </h1>
 
@@ -570,6 +578,22 @@ const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsa
           { threshold: 0 }
         );
         io.observe(hero);
+      }
+
+      const magnet = document.querySelector(".ss-hero-actions .ss-button-primary");
+      const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (magnet && finePointer && !reduceMotion) {
+        const pull = 0.28;
+        magnet.addEventListener("pointermove", (e) => {
+          const r = magnet.getBoundingClientRect();
+          const x = (e.clientX - (r.left + r.width / 2)) * pull;
+          const y = (e.clientY - (r.top + r.height / 2)) * pull;
+          magnet.style.transform = `translate(${x}px, ${y}px)`;
+        });
+        magnet.addEventListener("pointerleave", () => {
+          magnet.style.transform = "";
+        });
       }
     </script>
   </body>

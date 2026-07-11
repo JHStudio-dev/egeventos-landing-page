@@ -221,7 +221,7 @@ img {
 .ss-hero-pattern {
   position: absolute;
   inset: 0;
-  opacity: 0.2;
+  opacity: 0.1;
   background-image:
     linear-gradient(35deg, rgba(214, 168, 79, 0.2) 1px, transparent 1px),
     linear-gradient(145deg, rgba(214, 168, 79, 0.1) 1px, transparent 1px);
@@ -245,7 +245,7 @@ img {
   left: 18%;
   width: 34rem;
   height: 34rem;
-  background: rgba(214, 168, 79, 0.13);
+  background: rgba(214, 168, 79, 0.07);
 }
 
 .ss-hero-glow-two {
@@ -253,7 +253,86 @@ img {
   top: 12rem;
   width: 24rem;
   height: 24rem;
-  background: rgba(242, 213, 138, 0.1);
+  background: rgba(242, 213, 138, 0.05);
+}
+
+.ss-hero-monogram {
+  position: absolute;
+  z-index: 0;
+  top: 48%;
+  left: 50%;
+  width: clamp(22rem, 40vw, 40rem);
+  height: auto;
+  transform: translate(-50%, -50%);
+  opacity: 0.07;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ss-rotator {
+  display: inline-grid;
+  vertical-align: baseline;
+  margin-left: 0.28em;
+}
+
+.ss-rotator-word {
+  grid-area: 1 / 1;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--ss-gold-light);
+  text-shadow: 0 0 34px rgba(242, 213, 138, 0.18);
+  opacity: 0;
+}
+
+.ss-rotator-word:first-child {
+  opacity: 1;
+}
+
+.ss-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ss-rotator-word {
+    opacity: 0;
+    animation: ss-word-cycle 12s infinite;
+  }
+
+  .ss-rotator-word:nth-child(1) { animation-delay: 0s; }
+  .ss-rotator-word:nth-child(2) { animation-delay: 3s; }
+  .ss-rotator-word:nth-child(3) { animation-delay: 6s; }
+  .ss-rotator-word:nth-child(4) { animation-delay: 9s; }
+
+  @keyframes ss-word-cycle {
+    0% { opacity: 0; transform: translateY(0.3em); }
+    4% { opacity: 1; transform: translateY(0); }
+    21% { opacity: 1; transform: translateY(0); }
+    25% { opacity: 0; transform: translateY(-0.3em); }
+    100% { opacity: 0; transform: translateY(-0.3em); }
+  }
+
+  .ss-arch-card-feature .ss-arch-rim::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    background: linear-gradient(115deg, transparent 34%, rgba(255, 247, 232, 0.3) 50%, transparent 66%);
+    transform: translateX(-130%);
+    animation: ss-sheen 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.9s 1 forwards;
+    pointer-events: none;
+  }
+
+  @keyframes ss-sheen {
+    to { transform: translateX(130%); }
+  }
 }
 
 /* Navbar --------------------------------------------------------------- */
@@ -416,8 +495,8 @@ img {
   padding-bottom: 0.08em;
   font-style: italic;
   font-weight: 500;
-  color: var(--ss-gold-light);
-  text-shadow: 0 0 38px rgba(242, 213, 138, 0.16);
+  color: var(--ss-ivory);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
 }
 
 .ss-hero-text {
@@ -454,29 +533,38 @@ img {
 }
 
 .ss-arch-card-left {
-  transform: translateY(2rem) rotate(-1.4deg);
+  transform: translateY(2.6rem) rotate(-2deg);
 }
 
 .ss-arch-card-right {
-  transform: translateY(2rem) rotate(1.4deg);
+  transform: translateY(1.1rem) rotate(1.5deg);
 }
 
 .ss-arch-card-feature {
   z-index: 3;
   max-width: 19rem;
-  transform: translateY(-0.4rem) scale(1.02);
+  transform: translateY(-1.2rem) scale(1.04);
+}
+
+.ss-arch-card-feature .ss-arch-shell {
+  border-color: rgba(242, 213, 138, 0.66);
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 247, 232, 0.2),
+    inset 0 0 0 1px rgba(255, 247, 232, 0.04),
+    0 0 90px rgba(214, 168, 79, 0.24);
 }
 
 .ss-arch-card-left:hover {
-  transform: translateY(1rem) rotate(-1deg);
+  transform: translateY(2rem) rotate(-1.4deg);
 }
 
 .ss-arch-card-right:hover {
-  transform: translateY(1rem) rotate(1deg);
+  transform: translateY(0.5rem) rotate(1deg);
 }
 
 .ss-arch-card-feature:hover {
-  transform: translateY(-1.4rem) scale(1.03);
+  transform: translateY(-2rem) scale(1.05);
 }
 
 .ss-arch-shell {
@@ -520,6 +608,7 @@ img {
 .ss-arch-rim {
   position: relative;
   padding: 0.45rem;
+  overflow: hidden;
   border-radius: 8.45rem 8.45rem 1rem 1rem;
   background: linear-gradient(180deg, rgba(255, 247, 232, 0.18), rgba(214, 168, 79, 0.12) 24%, rgba(12, 9, 6, 0.86));
   box-shadow:
@@ -536,6 +625,7 @@ img {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  transition: transform var(--ss-transition);
   box-shadow:
     inset 0 0 0 1px rgba(255, 247, 232, 0.06),
     inset 0 -120px 120px rgba(5, 4, 3, 0.84);
@@ -636,6 +726,37 @@ img {
   box-shadow:
     inset 0 1px 0 rgba(255, 247, 232, 0.45),
     0 14px 30px rgba(0, 0, 0, 0.28);
+}
+
+/* Hover: zoom the photo, reveal the label ------------------------------ */
+
+@media (hover: hover) {
+  .ss-arch-card:hover .ss-arch-image {
+    transform: scale(1.06);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ss-arch-label {
+    opacity: 0;
+    transform: translate(-50%, -0.4rem);
+    transition: opacity var(--ss-transition), transform var(--ss-transition);
+  }
+
+  .ss-arch-card:hover .ss-arch-label {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ss-arch-image {
+    transition: none;
+  }
+
+  .ss-arch-card:hover .ss-arch-image {
+    transform: none;
+  }
 }
 
 /* Entrance ------------------------------------------------------------- */
