@@ -7,6 +7,8 @@ const phone = "8912-3226";
 const email = "eventos.eg@hotmail.com";
 const instagram = "https://www.instagram.com/egeventos01";
 const facebook = "https://www.facebook.com/egevetos";
+const whatsappMsg = "Hola EG Eventos, vi su página y me gustaría cotizar un evento.";
+const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsappMsg)}`;
 ---
 
 <html lang="es">
@@ -30,7 +32,7 @@ const facebook = "https://www.facebook.com/egevetos";
           <a href="#sobre">Sobre mí</a>
           <a href="#contacto">Contacto</a>
         </nav>
-        <a href={`https://wa.me/${whatsapp}`} class="ss-button ss-button-primary ss-stickybar-cta">
+        <a href={whatsappLink} class="ss-button ss-button-primary ss-stickybar-cta">
           Cotizar evento
         </a>
       </div>
@@ -55,7 +57,7 @@ const facebook = "https://www.facebook.com/egevetos";
               <a href="#contacto">Contacto</a>
             </div>
 
-            <a href={`https://wa.me/${whatsapp}`} class="ss-button ss-button-primary ss-nav-cta">
+            <a href={whatsappLink} class="ss-button ss-button-primary ss-nav-cta">
               Cotizar evento
             </a>
           </nav>
@@ -80,7 +82,7 @@ const facebook = "https://www.facebook.com/egevetos";
             </p>
 
             <div class="ss-hero-actions">
-              <a href={`https://wa.me/${whatsapp}`} class="ss-button ss-button-primary">
+              <a href={whatsappLink} class="ss-button ss-button-primary">
                 Cotizar evento
               </a>
 
@@ -513,7 +515,7 @@ const facebook = "https://www.facebook.com/egevetos";
             Cotiza sin compromiso, te respondemos por WhatsApp.
           </p>
 
-          <a href={`https://wa.me/${whatsapp}`} class="ss-button ss-button-primary ss-cta-button">
+          <a href={whatsappLink} class="ss-button ss-button-primary ss-cta-button">
             Cotizar evento
           </a>
 
@@ -548,7 +550,7 @@ const facebook = "https://www.facebook.com/egevetos";
         <div class="ss-footer-col">
           <span class="ss-footer-label">Contacto</span>
           <a href={`tel:+${whatsapp}`} class="ss-footer-phone">{phone}</a>
-          <a href={`https://wa.me/${whatsapp}`}>WhatsApp</a>
+          <a href={whatsappLink}>WhatsApp</a>
           <a href={`mailto:${email}`}>{email}</a>
         </div>
       </div>
