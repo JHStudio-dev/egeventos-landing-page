@@ -1433,6 +1433,19 @@ img {
   color: var(--ss-ivory);
 }
 
+.ss-cta-email {
+  display: block;
+  margin-top: 0.55rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  color: var(--ss-text-muted);
+  transition: color var(--ss-transition);
+}
+
+.ss-cta-email:hover {
+  color: var(--ss-gold-light);
+}
+
 .ss-cta-socials {
   margin-top: 1.75rem;
   display: flex;
