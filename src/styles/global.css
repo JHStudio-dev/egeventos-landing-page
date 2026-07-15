@@ -1500,6 +1500,46 @@ img {
   }
 }
 
+/* swipe hint (mobile only) */
+.ss-gallery-hint {
+  display: none;
+}
+
+/* On phones the gallery becomes a horizontal swipe carousel so the page
+   does not turn into an endless vertical scroll of photos. */
+@media (max-width: 560px) {
+  .ss-gallery-hint {
+    display: block;
+    margin: -0.5rem 0 1.1rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(242, 213, 138, 0.75);
+  }
+
+  .ss-gallery-grid {
+    display: flex;
+    grid-auto-rows: initial;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 0;
+    padding-bottom: 0.6rem;
+    scrollbar-width: none;
+  }
+
+  .ss-gallery-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ss-gallery-item {
+    flex: 0 0 85%;
+    grid-row: auto;
+    scroll-snap-align: start;
+    aspect-ratio: 4 / 5;
+  }
+}
+
 /* ==========================================================================
    Contact CTA
    ========================================================================== */
