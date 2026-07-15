@@ -1747,10 +1747,40 @@ img {
   align-items: center;
 }
 
+.ss-crew-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
 .ss-crew-media {
   display: flex;
   gap: 0.85rem;
   aspect-ratio: 8 / 7;
+}
+
+.ss-crew-strip {
+  display: flex;
+  gap: 0.85rem;
+}
+
+.ss-crew-thumb {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--ss-radius-sm);
+  border: 1px solid var(--ss-border);
+  background: #130f0b;
+}
+
+.ss-crew-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .ss-crew-col {
