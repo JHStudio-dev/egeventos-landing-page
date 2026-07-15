@@ -32,6 +32,19 @@ const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsa
 
   <body>
     <main class="ss-page">
+      <nav id="ss-mobile-menu" class="ss-mobile-menu" aria-label="Menú de navegación">
+        <button class="ss-menu-close" type="button" aria-label="Cerrar menú">&times;</button>
+        <ul class="ss-mobile-menu-links">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#sobre">Sobre mí</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a href={whatsappLink} class="ss-button ss-button-primary ss-mobile-menu-cta">
+          Cotizar evento
+        </a>
+      </nav>
+
       <div class="ss-stickybar" id="ss-stickybar">
         <a href="#" class="ss-stickybar-logo">EG Eventos</a>
         <nav class="ss-stickybar-links">
@@ -43,6 +56,9 @@ const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsa
         <a href={whatsappLink} class="ss-button ss-button-primary ss-stickybar-cta">
           Cotizar evento
         </a>
+        <button class="ss-menu-toggle ss-menu-toggle-sticky" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="ss-mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
 
       <section class="ss-hero">
@@ -52,6 +68,9 @@ const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsa
         <img class="ss-hero-monogram" src="/logo.webp" alt="" aria-hidden="true" />
 
         <header class="ss-header">
+          <button class="ss-menu-toggle ss-menu-toggle-hero" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="ss-mobile-menu">
+            <span></span><span></span><span></span>
+          </button>
           <div class="ss-topbar">
             <a href="#" class="ss-logo" aria-label="EG Eventos">
               <img src="/logo.webp" alt="EG Eventos" class="ss-logo-img" width="200" height="211" fetchpriority="high" decoding="async" />
@@ -74,11 +93,6 @@ const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsa
 
         <div class="ss-hero-grid">
           <div class="ss-hero-content">
-            <p class="ss-eyebrow">
-              <span class="ss-eyebrow-line"></span>
-              Wedding &amp; Events Planners
-            </p>
-
             <h1 class="ss-display-title ss-hero-title">
               Convertimos cada evento en
               <em>un recuerdo inolvidable</em>
@@ -378,6 +392,7 @@ const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsa
               como si fuera la mía.
             </p>
             <p class="ss-about-signature">Edgar García · Fundador de EG Eventos</p>
+            <p class="ss-about-tagline">Wedding &amp; Events Planners</p>
             <a href="#contacto" class="ss-button ss-button-secondary ss-about-cta">
               Cotizar evento
             </a>
@@ -600,6 +615,72 @@ const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsa
           { threshold: 0 }
         );
         io.observe(hero);
+      }
+
+      const menu = document.getElementById("ss-mobile-menu");
+      const toggles = document.querySelectorAll(".ss-menu-toggle");
+      if (menu && toggles.length) {
+        const setMenu = (open) => {
+          menu.classList.toggle("is-open", open);
+          document.body.classList.toggle("ss-menu-open", open);
+          toggles.forEach((t) => t.setAttribute("aria-expanded", String(open)));
+        };
+        toggles.forEach((t) => t.addEventListener("click", () => setMenu(!menu.classList.contains("is-open"))));
+        menu.querySelector(".ss-menu-close")?.addEventListener("click", () => setMenu(false));
+        menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") setMenu(false);
+        });
+      }
+
+      const showMedia = document.querySelector(".ss-showpiece-media");
+      const showTag = document.querySelector(".ss-showpiece-tag");
+      const showBand = document.querySelector(".ss-showband");
+      if (showMedia && showTag && showBand) {
+        const slides = [
+          { cls: "ss-photo-bodas", label: "Bodas" },
+          { cls: "ss-photo-graduaciones", label: "Graduaciones" },
+          { cls: "ss-photo-sociales", label: "Sociales" },
+        ];
+        ["/hero-bodas.webp", "/hero-graduaciones.webp", "/hero-sociales.webp"].forEach((s) => {
+          const img = new Image();
+          img.src = s;
+        });
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+        // Rotate only when the side bands are hidden (mobile layout) and motion is allowed.
+        const isMobile = () => getComputedStyle(showBand).display === "none" && !reduce.matches;
+        let idx = 0;
+        let timer = null;
+        const advance = () => {
+          idx = (idx + 1) % slides.length;
+          showMedia.style.opacity = "0";
+          setTimeout(() => {
+            slides.forEach((s) => showMedia.classList.remove(s.cls));
+            showMedia.classList.add(slides[idx].cls);
+            showTag.textContent = slides[idx].label;
+            showMedia.style.opacity = "1";
+          }, 450);
+        };
+        const start = () => {
+          if (timer || !isMobile()) return;
+          showMedia.style.transition = "opacity 450ms ease";
+          timer = setInterval(advance, 3600);
+        };
+        const stop = () => {
+          if (timer) {
+            clearInterval(timer);
+            timer = null;
+          }
+          idx = 0;
+          slides.forEach((s) => showMedia.classList.remove(s.cls));
+          showMedia.classList.add("ss-photo-bodas");
+          showTag.textContent = "Bodas";
+          showMedia.style.opacity = "";
+          showMedia.style.transition = "";
+        };
+        const sync = () => (isMobile() ? start() : stop());
+        sync();
+        window.addEventListener("resize", sync);
       }
 
       const magnet = document.querySelector(".ss-hero-actions .ss-button-primary");
