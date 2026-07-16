@@ -12,17 +12,73 @@ const instagram = "https://www.instagram.com/egeventos01";
 const facebook = "https://www.facebook.com/egevetos";
 const whatsappMsg = "Hola EG Eventos, vi su página y me gustaría cotizar un evento.";
 const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsappMsg)}`;
+
+const siteUrl = "https://egeventoshn.com";
+const pageTitle = "EG Eventos | Wedding & Events Planners en Tegucigalpa";
+const pageDesc =
+  "Planificación, decoración y coordinación de bodas, graduaciones y celebraciones sociales en Tegucigalpa y todo Honduras. Cuidamos cada detalle de tu evento.";
+const ogImage = `${siteUrl}/og-image.jpg`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "ProfessionalService"],
+  "@id": `${siteUrl}/#business`,
+  name: businessName,
+  description: pageDesc,
+  url: siteUrl,
+  image: ogImage,
+  logo: `${siteUrl}/icon-512.png`,
+  telephone: `+504 ${phone}`,
+  email,
+  priceRange: "$$",
+  founder: { "@type": "Person", name: "Edgar García" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Tegucigalpa",
+    addressRegion: "Francisco Morazán",
+    addressCountry: "HN",
+  },
+  areaServed: { "@type": "Country", name: "Honduras" },
+  sameAs: [instagram, facebook],
+};
 ---
 
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Planificación, decoración y coordinación de eventos elegantes. Bodas, graduaciones y celebraciones sociales cuidadas en cada detalle."
-    />
-    <title>{businessName} | Wedding & Events Planners</title>
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
+    <link rel="canonical" href={siteUrl} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0d0a08" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={businessName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="EG Eventos — Wedding & Events Planners" />
+    <meta property="og:locale" content="es_LA" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDesc} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <link rel="preload" as="image" href="/logo.webp" fetchpriority="high" />
     <link rel="preload" as="image" href="/hero-bodas.webp" />
@@ -157,7 +213,6 @@ const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsa
 
           <ul class="ss-services-grid">
             <li class="ss-service">
-              <span class="ss-service-num">01</span>
               <span class="ss-service-line"></span>
               <h3 class="ss-service-name">Planificación de eventos</h3>
               <p class="ss-service-text">
@@ -166,7 +221,6 @@ const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsa
             </li>
 
             <li class="ss-service">
-              <span class="ss-service-num">02</span>
               <span class="ss-service-line"></span>
               <h3 class="ss-service-name">Decoración personalizada</h3>
               <p class="ss-service-text">
@@ -175,7 +229,6 @@ const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsa
             </li>
 
             <li class="ss-service">
-              <span class="ss-service-num">03</span>
               <span class="ss-service-line"></span>
               <h3 class="ss-service-name">Montajes elegantes</h3>
               <p class="ss-service-text">
@@ -184,7 +237,6 @@ const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsa
             </li>
 
             <li class="ss-service">
-              <span class="ss-service-num">04</span>
               <span class="ss-service-line"></span>
               <h3 class="ss-service-name">Centros de mesa exclusivos</h3>
               <p class="ss-service-text">
@@ -193,7 +245,6 @@ const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsa
             </li>
 
             <li class="ss-service">
-              <span class="ss-service-num">05</span>
               <span class="ss-service-line"></span>
               <h3 class="ss-service-name">Ambientaciones temáticas</h3>
               <p class="ss-service-text">
@@ -202,7 +253,6 @@ const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsa
             </li>
 
             <li class="ss-service">
-              <span class="ss-service-num">06</span>
               <span class="ss-service-line"></span>
               <h3 class="ss-service-name">Atención profesional</h3>
               <p class="ss-service-text">
