@@ -101,12 +101,27 @@ img {
    ========================================================================== */
 
 .ss-page {
+  position: relative;
   min-height: 100vh;
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% -10%, rgba(214, 168, 79, 0.16), transparent 34rem),
-    radial-gradient(circle at 100% 20%, rgba(242, 213, 138, 0.07), transparent 28rem),
-    linear-gradient(180deg, #050403 0%, #0d0a08 45%, #050403 100%);
+    radial-gradient(circle at 50% -8%, rgba(194, 143, 44, 0.14), transparent 34rem),
+    radial-gradient(circle at 100% 18%, rgba(242, 213, 138, 0.16), transparent 30rem),
+    linear-gradient(180deg, #faf5ec 0%, #f6eedf 45%, #faf5ec 100%);
+}
+
+/* Faint paper grain over the whole page so the ivory reads as premium
+   stationery rather than flat white. */
+.ss-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
 }
 
 .ss-container {
@@ -1731,7 +1746,10 @@ img {
   overflow: hidden;
   border-radius: var(--ss-radius-sm);
   border: 1px solid var(--ss-border);
-  background: #130f0b;
+  background: var(--ss-paper-deep);
+  box-shadow:
+    0 2px 6px rgba(60, 42, 15, 0.05),
+    0 14px 30px rgba(60, 42, 15, 0.12);
 }
 
 .ss-crew-thumb img {
@@ -1761,8 +1779,8 @@ img {
   overflow: hidden;
   border-radius: var(--ss-radius-md);
   border: 1px solid var(--ss-border);
-  background: #130f0b;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.42);
+  background: var(--ss-paper-deep);
+  box-shadow: 0 24px 55px rgba(60, 42, 15, 0.18);
 }
 
 .ss-crew-fig img {
@@ -2111,10 +2129,11 @@ img {
   justify-content: space-between;
   gap: 1.5rem;
   padding: 0.7rem clamp(1rem, 4vw, 2.5rem);
-  background: rgba(8, 6, 4, 0.82);
+  background: rgba(250, 245, 236, 0.86);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--ss-border-soft);
+  box-shadow: 0 10px 30px rgba(60, 42, 15, 0.08);
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
@@ -2154,7 +2173,7 @@ img {
 }
 
 .ss-stickybar-links a:hover {
-  color: var(--ss-gold-light);
+  color: var(--ss-gold-dark);
 }
 
 .ss-stickybar-cta {
@@ -2224,6 +2243,8 @@ img {
   position: fixed;
   inset: 0;
   z-index: 80;
+  --ss-text: var(--ss-ivory);
+  --ss-text-soft: var(--ss-cream);
   display: flex;
   flex-direction: column;
   align-items: center;
