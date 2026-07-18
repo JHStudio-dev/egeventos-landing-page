@@ -1355,8 +1355,8 @@ img {
 .ss-events {
   position: relative;
   padding: clamp(5rem, 9vw, 7rem) 0;
-  border-top: 1px solid rgba(214, 168, 79, 0.08);
-  background: linear-gradient(180deg, #060504 0%, #0b0806 100%);
+  border-top: 1px solid var(--ss-border-soft);
+  background: var(--ss-paper);
 }
 
 .ss-events-header {
@@ -1383,7 +1383,7 @@ img {
 .ss-bands {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid rgba(242, 213, 138, 0.22);
+  border-top: 1px solid var(--ss-border);
 }
 
 .ss-band {
@@ -1393,14 +1393,10 @@ img {
   align-items: flex-end;
   padding: clamp(2rem, 5vw, 3.5rem);
   overflow: hidden;
-  background-color: #130f0b;
+  background-color: var(--ss-paper);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-}
-
-.ss-band + .ss-band {
-  border-top: 1px solid rgba(242, 213, 138, 0.22);
 }
 
 .ss-band::after {
@@ -1409,13 +1405,25 @@ img {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(5, 4, 3, 0.88) 0%, rgba(5, 4, 3, 0.5) 45%, rgba(5, 4, 3, 0.2) 100%),
-    linear-gradient(180deg, transparent 45%, rgba(5, 4, 3, 0.72));
+    radial-gradient(
+      135% 125% at -8% 112%,
+      var(--ss-paper) 0%,
+      rgba(250, 245, 236, 0.85) 24%,
+      rgba(250, 245, 236, 0.32) 44%,
+      rgba(250, 245, 236, 0) 62%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(250, 245, 236, 0.55) 0%,
+      rgba(250, 245, 236, 0) 12%,
+      rgba(250, 245, 236, 0) 90%,
+      var(--ss-paper) 100%
+    );
   transition: opacity var(--ss-transition);
 }
 
 .ss-band:hover::after {
-  opacity: 0.82;
+  opacity: 0.9;
 }
 
 .ss-band-content {
@@ -1428,7 +1436,7 @@ img {
   font-family: var(--ss-font-display);
   font-style: italic;
   font-size: 1rem;
-  color: var(--ss-gold-light);
+  color: var(--ss-gold-dark);
 }
 
 .ss-band-name {
@@ -1438,15 +1446,17 @@ img {
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.04;
-  color: var(--ss-ivory);
+  color: var(--ss-ink);
+  text-shadow: 0 1px 14px rgba(250, 245, 236, 0.55);
 }
 
 .ss-band-text {
   margin: 0;
   max-width: 32rem;
-  color: var(--ss-cream);
+  color: var(--ss-ink-soft);
   font-size: 1.02rem;
   line-height: 1.6;
+  text-shadow: 0 1px 10px rgba(250, 245, 236, 0.6);
 }
 
 .ss-band-bodas {
