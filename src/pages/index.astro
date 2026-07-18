@@ -51,7 +51,7 @@ const jsonLd = {
     <meta name="description" content={pageDesc} />
     <link rel="canonical" href={siteUrl} />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#0d0a08" />
+    <meta name="theme-color" content="#faf5ec" />
 
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -80,6 +80,7 @@ const jsonLd = {
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
+    <link rel="preload" as="image" href="/about-founder.webp" fetchpriority="high" />
     <link rel="preload" as="image" href="/logo.webp" fetchpriority="high" />
     <link rel="preload" as="image" href="/hero-bodas.webp" />
     <link rel="preload" as="image" href="/hero-graduaciones.webp" />
@@ -117,7 +118,29 @@ const jsonLd = {
         </button>
       </div>
 
-      <section class="ss-hero">
+      <section class="ss-cover" aria-label="Portada">
+        <div class="ss-cover-photo" aria-hidden="true"></div>
+        <div class="ss-cover-scrim" aria-hidden="true"></div>
+        <div class="ss-cover-grain" aria-hidden="true"></div>
+
+        <div class="ss-cover-inner">
+          <a href="#inicio" class="ss-cover-logo" aria-label="EG Eventos">
+            <img src="/logo.webp" alt="EG Eventos" width="200" height="211" fetchpriority="high" decoding="async" />
+          </a>
+
+          <div class="ss-cover-bottom">
+            <div class="ss-cover-headline">
+              <p class="ss-cover-eyebrow">EG Eventos</p>
+              <h1 class="ss-display-title ss-cover-title">
+                Wedding &amp; Event Planner
+              </h1>
+              <p class="ss-cover-name">Edgar García &middot; Fundador</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="inicio" class="ss-hero">
         <div class="ss-hero-pattern"></div>
         <div class="ss-hero-glow ss-hero-glow-one"></div>
         <div class="ss-hero-glow ss-hero-glow-two"></div>
@@ -661,7 +684,12 @@ const jsonLd = {
       const hero = document.querySelector(".ss-hero");
       if (bar && hero) {
         const io = new IntersectionObserver(
-          ([entry]) => bar.classList.toggle("is-visible", !entry.isIntersecting),
+          ([entry]) => {
+            // Show only once the hero has scrolled above the viewport, so the
+            // bar never appears over the cover that now sits above the hero.
+            const scrolledPast = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+            bar.classList.toggle("is-visible", scrolledPast);
+          },
           { threshold: 0 }
         );
         io.observe(hero);

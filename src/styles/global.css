@@ -205,14 +205,253 @@ img {
 
 .ss-button-secondary {
   border: 1px solid var(--ss-border);
-  background: rgba(255, 247, 232, 0.03);
+  background: rgba(37, 29, 21, 0.02);
   color: var(--ss-text);
 }
 
 .ss-button-secondary:hover {
   transform: translateY(-2px);
-  border-color: var(--ss-gold-light);
-  background: rgba(214, 168, 79, 0.09);
+  border-color: var(--ss-gold);
+  background: rgba(194, 143, 44, 0.1);
+}
+
+/* ==========================================================================
+   Cover / Portada (founder splash)
+   ========================================================================== */
+
+.ss-cover {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  overflow: hidden;
+  background-color: #0d0a08;
+}
+
+.ss-cover-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url("/about-founder.webp") 34% 24% / cover no-repeat;
+  transform: scale(1.06);
+  transform-origin: 34% 30%;
+  will-change: transform;
+}
+
+.ss-cover-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(6, 4, 3, 0.55) 0%,
+      rgba(6, 4, 3, 0.12) 20%,
+      rgba(6, 4, 3, 0.34) 46%,
+      rgba(6, 4, 3, 0.66) 64%,
+      rgba(6, 4, 3, 0.88) 82%,
+      rgba(4, 3, 2, 0.98) 100%
+    ),
+    radial-gradient(circle at 50% 42%, rgba(214, 168, 79, 0.12), transparent 56%),
+    radial-gradient(125% 105% at 50% 46%, transparent 50%, rgba(4, 3, 2, 0.64) 100%);
+}
+
+.ss-cover-grain {
+  position: absolute;
+  inset: -60%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.ss-cover-inner {
+  position: relative;
+  z-index: 3;
+  width: min(100%, var(--ss-hero-container));
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vh, 2.75rem) 1.5rem clamp(1.75rem, 4vh, 3rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--ss-ivory);
+}
+
+.ss-cover-logo {
+  display: inline-flex;
+}
+
+.ss-cover-logo img {
+  height: clamp(4.5rem, 8vh, 6.75rem);
+  width: auto;
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.6));
+}
+
+.ss-cover-bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ss-cover-eyebrow {
+  margin: 0 0 1.15rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ss-gold-light);
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.7);
+}
+
+.ss-cover-title {
+  margin: 0;
+  max-width: 16ch;
+  font-size: clamp(2.6rem, 7vw, 5.25rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.02;
+  color: #fff7ec;
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.55),
+    0 12px 50px rgba(0, 0, 0, 0.6);
+}
+
+.ss-cover-name {
+  margin: 1.35rem 0 0;
+  font-family: var(--ss-font-display);
+  font-style: italic;
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  letter-spacing: 0.02em;
+  color: var(--ss-cream);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.75);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ss-cover-photo {
+    animation: ss-cover-kenburns 28s ease-in-out infinite alternate;
+  }
+
+  .ss-cover-grain {
+    animation: ss-cover-grain-shift 0.7s steps(3) infinite;
+  }
+
+  .ss-cover-logo,
+  .ss-cover-eyebrow,
+  .ss-cover-title,
+  .ss-cover-name {
+    opacity: 0;
+    animation: ss-cover-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .ss-cover-logo { animation-delay: 0.1s; }
+  .ss-cover-eyebrow { animation-delay: 0.3s; }
+  .ss-cover-title {
+    animation-name: ss-cover-focus;
+    animation-duration: 1.7s;
+    animation-delay: 0.42s;
+  }
+  .ss-cover-name { animation-delay: 0.62s; }
+
+  @keyframes ss-cover-rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @keyframes ss-cover-focus {
+    0% {
+      opacity: 0;
+      filter: blur(16px);
+      transform: translateY(22px) scale(1.05);
+      letter-spacing: 0.06em;
+    }
+    60% { opacity: 1; }
+    100% {
+      opacity: 1;
+      filter: blur(0);
+      transform: none;
+      letter-spacing: normal;
+    }
+  }
+
+  @keyframes ss-cover-kenburns {
+    0% { transform: scale(1.06) translate(0, 0); }
+    100% { transform: scale(1.15) translate(-1.6%, -1.8%); }
+  }
+
+  @keyframes ss-cover-grain-shift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(6%, 4%); }
+  }
+}
+
+@media (max-width: 560px) {
+  .ss-cover-photo {
+    background-position: 32% 22%;
+  }
+}
+
+/* Split editorial — founder left, headline right */
+@media (min-width: 860px) {
+  .ss-cover-photo {
+    background-position: 50% 30%;
+    transform-origin: 40% 34%;
+  }
+
+  .ss-cover-scrim {
+    background:
+      linear-gradient(
+        96deg,
+        rgba(6, 4, 3, 0) 0%,
+        rgba(6, 4, 3, 0) 33%,
+        rgba(6, 4, 3, 0.5) 60%,
+        rgba(4, 3, 2, 0.93) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(6, 4, 3, 0.44) 0%,
+        rgba(6, 4, 3, 0) 30%,
+        rgba(6, 4, 3, 0) 60%,
+        rgba(6, 4, 3, 0.58) 100%
+      ),
+      radial-gradient(circle at 28% 50%, rgba(214, 168, 79, 0.14), transparent 46%),
+      radial-gradient(140% 120% at 44% 50%, transparent 56%, rgba(4, 3, 2, 0.5) 100%);
+  }
+
+  .ss-cover-logo {
+    align-self: flex-start;
+  }
+
+  .ss-cover-bottom {
+    margin-top: auto;
+    margin-bottom: auto;
+    align-self: flex-end;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 33rem;
+  }
+
+  .ss-cover-eyebrow {
+    position: relative;
+    padding-left: 3.4rem;
+  }
+
+  .ss-cover-eyebrow::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.52em;
+    width: 2.4rem;
+    height: 1px;
+    background: linear-gradient(90deg, var(--ss-gold-light), transparent);
+  }
+
+  .ss-cover-title {
+    max-width: 13ch;
+  }
 }
 
 /* ==========================================================================
