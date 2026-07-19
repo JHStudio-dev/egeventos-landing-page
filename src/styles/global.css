@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
-/* ==========================================================================
-   Design tokens
-   ========================================================================== */
+/* Design tokens */
 
 :root {
   --ss-black: #050403;
@@ -10,21 +8,21 @@
   --ss-charcoal-soft: #211c18;
 
   --ss-gold: #c28f2c;
-  --ss-gold-light: #f2d58a;   /* light gold — for accents ON dark/photo surfaces */
-  --ss-gold-dark: #8a5e1c;    /* gold accent text on the light page (AA on cream) */
-  --ss-gold-deep: #6f4a15;    /* deeper gold for small accent text on cream */
+  --ss-gold-light: #f2d58a;
+  --ss-gold-dark: #8a5e1c;
+  --ss-gold-deep: #6f4a15;
 
-  --ss-ivory: #fff7e8;        /* text on dark/photo surfaces */
-  --ss-cream: #f4e6cc;        /* soft text on dark/photo surfaces */
-  --ss-muted: #b9aa91;        /* muted text on dark/photo surfaces */
+  --ss-ivory: #fff7e8;
+  --ss-cream: #f4e6cc;
+  --ss-muted: #b9aa91;
   --ss-brown: #7a5730;
 
-  --ss-paper: #faf5ec;        /* page background — warm ivory */
-  --ss-paper-soft: #f4ecdd;   /* alternating section background */
-  --ss-paper-deep: #ece0cb;   /* deeper warm panel */
-  --ss-ink: #251d15;          /* main text on light */
-  --ss-ink-soft: #4c4033;     /* secondary text on light */
-  --ss-ink-muted: #736451;    /* muted text on light */
+  --ss-paper: #faf5ec;
+  --ss-paper-soft: #f4ecdd;
+  --ss-paper-deep: #ece0cb;
+  --ss-ink: #251d15;
+  --ss-ink-soft: #4c4033;
+  --ss-ink-muted: #736451;
 
   --ss-bg: var(--ss-paper);
   --ss-surface: rgba(37, 29, 21, 0.035);
@@ -54,9 +52,7 @@
   --ss-transition: 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ==========================================================================
-   Base
-   ========================================================================== */
+/* Base */
 
 * {
   box-sizing: border-box;
@@ -96,9 +92,7 @@ img {
   display: block;
 }
 
-/* ==========================================================================
-   Layout & typography helpers
-   ========================================================================== */
+/* Layout & typography helpers */
 
 .ss-page {
   position: relative;
@@ -110,8 +104,7 @@ img {
     linear-gradient(180deg, #faf5ec 0%, #f6eedf 45%, #faf5ec 100%);
 }
 
-/* Faint paper grain over the whole page so the ivory reads as premium
-   stationery rather than flat white. */
+/* Paper grain */
 .ss-page::after {
   content: "";
   position: fixed;
@@ -166,9 +159,7 @@ img {
   line-height: 1.75;
 }
 
-/* ==========================================================================
-   Buttons
-   ========================================================================== */
+/* Buttons */
 
 .ss-button {
   display: inline-flex;
@@ -215,9 +206,7 @@ img {
   background: rgba(194, 143, 44, 0.1);
 }
 
-/* ==========================================================================
-   Cover / Portada (founder splash)
-   ========================================================================== */
+/* Cover / Portada */
 
 .ss-cover {
   position: relative;
@@ -232,7 +221,7 @@ img {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url("/about-founder.webp") 34% 24% / cover no-repeat;
+  background: url("/Fundador 2.png") 34% 24% / cover no-repeat;
   transform: scale(1.06);
   transform-origin: 34% 30%;
   will-change: transform;
@@ -394,7 +383,7 @@ img {
   }
 }
 
-/* Split editorial — founder left, headline right */
+/* Split editorial */
 @media (min-width: 860px) {
   .ss-cover-photo {
     background-position: 50% 30%;
@@ -1160,13 +1149,13 @@ img {
 }
 
 .ss-band-bodas {
-  background-image: url("/event-bodas.webp");
+  background-image: url("/bodaaa.jpg");
 }
 .ss-band-graduaciones {
-  background-image: url("/graduacion.webp");
+  background-image: url("/graduacion.png");
 }
 .ss-band-sociales {
-  background-image: url("/baby-shower.webp");
+  background-image: url("/Social.png");
 }
 .ss-band-empresariales {
   background-image: url("/event-empresariales.webp");
@@ -1185,9 +1174,7 @@ img {
   }
 }
 
-/* ==========================================================================
-   Gallery
-   ========================================================================== */
+/* Gallery */
 
 .ss-gallery {
   position: relative;
@@ -1305,8 +1292,7 @@ img {
   color: var(--ss-gold-dark);
 }
 
-/* Tablet & desktop: caption overlays the photo (phones keep it below).
-   Photo stays bright — just a soft bottom scrim for legibility. */
+/* Caption overlay */
 @media (min-width: 561px) {
   .ss-gallery-frame::after {
     content: "";
@@ -1385,7 +1371,7 @@ img {
 }
 
 .ss-shot-1 {
-  background-image: url("/gallery-1.webp");
+  background-image: url("/boda.jpg");
 }
 .ss-shot-2 {
   background-image: url("/gallery-2.webp");
@@ -1411,7 +1397,7 @@ img {
   background-image: url("/gallery-8.webp");
 }
 .ss-shot-9 {
-  background-image: url("/gallery-9.webp");
+  background-image: url("/Galery 9.png");
 }
 
 @media (min-width: 901px) {
@@ -1420,13 +1406,12 @@ img {
   }
 }
 
-/* swipe hint (mobile only) */
+/* Swipe hint */
 .ss-gallery-hint {
   display: none;
 }
 
-/* On phones the gallery becomes a horizontal swipe carousel so the page
-   does not turn into an endless vertical scroll of photos. */
+/* Mobile carousel */
 @media (max-width: 560px) {
   .ss-gallery-hint {
     display: block;
@@ -1463,9 +1448,7 @@ img {
   }
 }
 
-/* ==========================================================================
-   Contact CTA
-   ========================================================================== */
+/* Contact CTA */
 
 .ss-cta {
   position: relative;
@@ -1596,9 +1579,7 @@ img {
   }
 }
 
-/* ==========================================================================
-   Footer
-   ========================================================================== */
+/* Footer */
 
 .ss-footer {
   border-top: 1px solid var(--ss-border);
@@ -1691,9 +1672,7 @@ img {
   }
 }
 
-/* ==========================================================================
-   Process
-   ========================================================================== */
+/* Process */
 
 .ss-crew {
   padding: clamp(5rem, 9vw, 8rem) 1.5rem;
@@ -2193,9 +2172,7 @@ img {
   }
 }
 
-/* ==========================================================================
-   Mobile navigation (hamburger + overlay)
-   ========================================================================== */
+/* Mobile navigation */
 
 .ss-menu-toggle {
   display: none;
@@ -2327,9 +2304,7 @@ body.ss-menu-open {
   }
 }
 
-/* ==========================================================================
-   Social feed
-   ========================================================================== */
+/* Social feed */
 
 .ss-social {
   padding: clamp(4rem, 8vw, 6rem) 1.5rem;
@@ -2436,10 +2411,7 @@ body.ss-menu-open {
   }
 }
 
-/* ==========================================================================
-   Short-viewport calibration (laptops ~768px tall)
-   Height-based only. Widths, columns and full-bleed bands stay untouched.
-   ========================================================================== */
+/* Short-viewport calibration */
 
 @media (max-height: 820px) {
   .ss-hero {
@@ -2458,20 +2430,11 @@ body.ss-menu-open {
     padding: 0.7rem 0;
   }
 
-  .ss-hero-grid {
-    padding-top: clamp(1.25rem, 3vh, 2.25rem);
-    padding-bottom: 2rem;
-  }
-
   .ss-hero-title {
     margin-top: 1rem;
   }
 
   .ss-hero-actions {
     margin-top: 0.4rem;
-  }
-
-  .ss-hero-monogram {
-    width: clamp(18rem, 32vw, 30rem);
   }
 }
