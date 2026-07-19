@@ -141,10 +141,8 @@ const jsonLd = {
       </section>
 
       <section id="inicio" class="ss-hero">
-        <div class="ss-hero-pattern"></div>
-        <div class="ss-hero-glow ss-hero-glow-one"></div>
-        <div class="ss-hero-glow ss-hero-glow-two"></div>
-        <img class="ss-hero-monogram" src="/logo.webp" alt="" aria-hidden="true" />
+        <div class="ss-hero-photo" aria-hidden="true"></div>
+        <div class="ss-hero-scrim" aria-hidden="true"></div>
 
         <header class="ss-header">
           <button class="ss-menu-toggle ss-menu-toggle-hero" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="ss-mobile-menu">
@@ -170,60 +168,28 @@ const jsonLd = {
           </nav>
         </header>
 
-        <div class="ss-hero-grid">
-          <div class="ss-hero-content">
-            <p class="ss-hero-eyebrow">
-              <span class="ss-hero-eyebrow-line" aria-hidden="true"></span>
-              Wedding &amp; Event Planner
-            </p>
+        <div class="ss-hero-welcome">
+          <p class="ss-hero-eyebrow">
+            <span class="ss-hero-eyebrow-line" aria-hidden="true"></span>
+            Wedding &amp; Event Planner
+          </p>
 
-            <h1 class="ss-display-title ss-hero-title">
-              Cuidamos cada detalle,
-              <em>tú vives el momento</em>
-            </h1>
+          <h1 class="ss-display-title ss-hero-title">
+            Bodas y eventos
+            <em>que se sienten tuyos</em>
+          </h1>
 
-            <ul class="ss-hero-index">
-              <li>
-                <button type="button" class="ss-hero-index-item is-active" data-type="bodas" aria-pressed="true">
-                  <span class="ss-hero-index-rule" aria-hidden="true"></span>
-                  <span class="ss-hero-index-label">Bodas</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="ss-hero-index-item" data-type="graduaciones" aria-pressed="false">
-                  <span class="ss-hero-index-rule" aria-hidden="true"></span>
-                  <span class="ss-hero-index-label">Graduaciones</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="ss-hero-index-item" data-type="celebraciones" aria-pressed="false">
-                  <span class="ss-hero-index-rule" aria-hidden="true"></span>
-                  <span class="ss-hero-index-label">Celebraciones</span>
-                </button>
-              </li>
-            </ul>
+          <p class="ss-hero-lead">
+            Del concepto al último brindis, cuidamos cada detalle para que
+            tú solo vivas el momento.
+          </p>
 
-            <div class="ss-hero-actions">
-              <a href={whatsappLink} class="ss-button ss-button-primary">
-                Cotizar evento
-              </a>
+          <div class="ss-hero-actions">
+            <a href={whatsappLink} class="ss-button ss-button-primary">
+              Cotizar evento
+            </a>
 
-              <a href="#servicios" class="ss-hero-link">Ver servicios</a>
-            </div>
-          </div>
-
-          <div class="ss-hero-visual" aria-hidden="true">
-            <figure class="ss-hero-figure">
-              <div class="ss-hero-figure-img"></div>
-              <span class="ss-hero-figure-ring"></span>
-            </figure>
-            <figure class="ss-hero-figure-sub">
-              <div class="ss-hero-figure-sub-img"></div>
-            </figure>
-            <div class="ss-hero-figure-caption">
-              <span class="ss-hero-figure-cat">Bodas</span>
-              <span class="ss-hero-figure-desc">Montaje y coordinación integral</span>
-            </div>
+            <a href="#servicios" class="ss-hero-link">Ver servicios</a>
           </div>
         </div>
       </section>
@@ -248,7 +214,9 @@ const jsonLd = {
               <span class="ss-service-line"></span>
               <h3 class="ss-service-name">Planificación de eventos</h3>
               <p class="ss-service-text">
-                Coordinamos cada etapa, desde la primera idea hasta el último invitado.
+                Planificamos cada detalle de tu evento con pasión y profesionalismo.
+                Nuestros servicios integrales contemplan la estética y la logística
+                de tu evento, creando experiencias únicas.
               </p>
             </li>
 
@@ -712,8 +680,7 @@ const jsonLd = {
       if (bar && hero) {
         const io = new IntersectionObserver(
           ([entry]) => {
-            // Show only once the hero has scrolled above the viewport, so the
-            // bar never appears over the cover that now sits above the hero.
+            // show the bar once the hero has scrolled past
             const scrolledPast = !entry.isIntersecting && entry.boundingClientRect.top < 0;
             bar.classList.toggle("is-visible", scrolledPast);
           },
@@ -736,94 +703,6 @@ const jsonLd = {
         document.addEventListener("keydown", (e) => {
           if (e.key === "Escape") setMenu(false);
         });
-      }
-
-      const heroVisual = document.querySelector(".ss-hero-visual");
-      const heroItems = Array.from(document.querySelectorAll(".ss-hero-index-item"));
-      if (heroVisual && heroItems.length) {
-        const figureImg = heroVisual.querySelector(".ss-hero-figure-img");
-        const subImg = heroVisual.querySelector(".ss-hero-figure-sub-img");
-        const catEl = heroVisual.querySelector(".ss-hero-figure-cat");
-        const descEl = heroVisual.querySelector(".ss-hero-figure-desc");
-        const DATA = {
-          bodas: { main: "/hero-bodas.webp", sub: "/gallery-1.webp", cat: "Bodas", desc: "Montaje y coordinación integral" },
-          graduaciones: { main: "/hero-graduaciones.webp", sub: "/gallery-9.webp", cat: "Graduaciones", desc: "Decoración y logística del evento" },
-          celebraciones: { main: "/hero-sociales.webp", sub: "/gallery-3.webp", cat: "Celebraciones", desc: "Cumpleaños, baby showers y más" },
-        };
-        const types = Object.keys(DATA);
-        types.forEach((t) => [DATA[t].main, DATA[t].sub].forEach((s) => { const i = new Image(); i.src = s; }));
-
-        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-        let current = "bodas";
-        let swapTimer = null;
-
-        const apply = (type) => {
-          if (type === current || !DATA[type]) return;
-          current = type;
-          const d = DATA[type];
-          heroItems.forEach((b) => {
-            const on = b.dataset.type === type;
-            b.classList.toggle("is-active", on);
-            b.setAttribute("aria-pressed", String(on));
-          });
-          heroVisual.classList.add("is-swapping");
-          clearTimeout(swapTimer);
-          swapTimer = setTimeout(() => {
-            figureImg.style.backgroundImage = `url("${d.main}")`;
-            subImg.style.backgroundImage = `url("${d.sub}")`;
-            catEl.textContent = d.cat;
-            descEl.textContent = d.desc;
-            heroVisual.classList.remove("is-swapping");
-          }, 240);
-        };
-
-        heroItems.forEach((b) => {
-          b.addEventListener("mouseenter", () => apply(b.dataset.type));
-          b.addEventListener("focus", () => apply(b.dataset.type));
-          b.addEventListener("click", () => apply(b.dataset.type));
-        });
-
-        // Gentle auto-advance so the hero breathes; pauses on interaction, off under reduced motion.
-        let auto = null;
-        let paused = false;
-        const startAuto = () => {
-          if (auto || reduce.matches) return;
-          auto = setInterval(() => {
-            if (!paused) apply(types[(types.indexOf(current) + 1) % types.length]);
-          }, 4800);
-        };
-        [heroVisual, document.querySelector(".ss-hero-index")].forEach((el) => {
-          if (!el) return;
-          el.addEventListener("pointerenter", () => { paused = true; });
-          el.addEventListener("pointerleave", () => { paused = false; });
-          el.addEventListener("focusin", () => { paused = true; });
-          el.addEventListener("focusout", () => { paused = false; });
-        });
-        startAuto();
-
-        // Mouse-move parallax: figure and inset image drift at different depths.
-        const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
-        if (finePointer.matches && !reduce.matches) {
-          let raf = null;
-          let nx = 0;
-          let ny = 0;
-          heroVisual.addEventListener("pointermove", (e) => {
-            const r = heroVisual.getBoundingClientRect();
-            nx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
-            ny = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
-            if (!raf) {
-              raf = requestAnimationFrame(() => {
-                heroVisual.style.setProperty("--px", nx.toFixed(3));
-                heroVisual.style.setProperty("--py", ny.toFixed(3));
-                raf = null;
-              });
-            }
-          });
-          heroVisual.addEventListener("pointerleave", () => {
-            heroVisual.style.setProperty("--px", "0");
-            heroVisual.style.setProperty("--py", "0");
-          });
-        }
       }
 
       const magnet = document.querySelector(".ss-hero-actions .ss-button-primary");
