@@ -1857,12 +1857,9 @@ img {
   }
 }
 
-/* ==========================================================================
-   About
-   ========================================================================== */
+/* About */
 
-/* Dark cards sitting on the light page keep light text via scoped tokens */
-.ss-about-card,
+/* Dark card tokens */
 .ss-cta-card {
   --ss-text: var(--ss-ivory);
   --ss-text-soft: var(--ss-cream);
@@ -1875,74 +1872,81 @@ img {
 
 .ss-about {
   position: relative;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  min-height: min(86vh, 740px);
   padding: clamp(4rem, 8vw, 7rem) 1.5rem;
   border-top: 1px solid var(--ss-border-soft);
-  background: var(--ss-paper);
-}
-
-.ss-about-photo {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: 32% center;
-  background-repeat: no-repeat;
-}
-
-.ss-about-scrim {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      95deg,
-      rgba(5, 4, 3, 0.05) 0%,
-      rgba(5, 4, 3, 0.35) 42%,
-      rgba(5, 4, 3, 0.82) 78%,
-      rgba(5, 4, 3, 0.92) 100%
-    ),
-    linear-gradient(180deg, rgba(5, 4, 3, 0.35) 0%, transparent 34%);
-}
-
-.ss-photo-founder {
-  background-image: url("/about-founder.webp");
+  background: linear-gradient(180deg, var(--ss-paper) 0%, var(--ss-paper-soft) 100%);
 }
 
 .ss-about-inner {
-  position: relative;
-  z-index: 1;
   width: min(100%, var(--ss-container));
   margin: 0 auto;
-  display: flex;
-  justify-content: flex-end;
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: center;
 }
 
-.ss-about-card {
+.ss-about-figure {
   position: relative;
-  width: min(100%, 30rem);
-  padding: clamp(1.9rem, 3.2vw, 2.7rem);
-  border-radius: var(--ss-radius-md);
-  border: 1px solid var(--ss-border);
-  background: rgba(10, 8, 6, 0.66);
-  backdrop-filter: blur(16px) saturate(125%);
-  -webkit-backdrop-filter: blur(16px) saturate(125%);
-  box-shadow: 0 30px 80px rgba(20, 12, 4, 0.5);
+  aspect-ratio: 5 / 6;
+  overflow: hidden;
+  border-radius: 13rem 13rem 1.6rem 1.6rem;
+  border: 1px solid var(--ss-border-soft);
+  box-shadow:
+    0 4px 14px rgba(60, 42, 15, 0.08),
+    0 34px 70px rgba(60, 42, 15, 0.16);
 }
 
-.ss-about-card::before {
-  content: "";
+.ss-about-backdrop {
   position: absolute;
-  inset: 0.55rem;
-  border: 1px solid rgba(242, 213, 138, 0.16);
-  border-radius: calc(var(--ss-radius-md) - 0.35rem);
-  pointer-events: none;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle 3.4rem at 78% 40%, rgba(255, 253, 246, 0.8), transparent 70%),
+    radial-gradient(circle 2.3rem at 20% 50%, rgba(242, 213, 138, 0.42), transparent 72%),
+    radial-gradient(circle 1.7rem at 84% 62%, rgba(255, 253, 246, 0.62), transparent 72%),
+    radial-gradient(circle 1.3rem at 30% 28%, rgba(255, 253, 246, 0.58), transparent 72%),
+    radial-gradient(55% 45% at 70% 22%, rgba(255, 255, 255, 0.68), transparent 72%),
+    radial-gradient(40% 34% at 22% 16%, rgba(242, 213, 138, 0.28), transparent 74%),
+    linear-gradient(165deg, #fdfaf3 0%, #f4ebd9 58%, #eee2cc 100%);
+  filter: blur(1px);
 }
 
-/* ==========================================================================
-   Misión, visión y valores
-   ========================================================================== */
+.ss-about-portrait {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 24px 30px rgba(40, 28, 10, 0.3));
+}
+
+.ss-about-body {
+  max-width: 34rem;
+}
+
+.ss-about-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0 0 1.1rem;
+  color: var(--ss-gold-deep);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+.ss-about-eyebrow::before {
+  content: "";
+  width: 2.2rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--ss-gold), rgba(214, 168, 79, 0));
+}
+
+/* Misión, visión y valores */
 
 .ss-values {
   padding: var(--ss-section-padding);
