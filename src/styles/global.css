@@ -2079,8 +2079,8 @@ img {
   }
 
   .ss-about-figure {
-    max-width: 22rem;
-    margin: 0 auto;
+    width: min(100%, 22rem);
+    justify-self: center;
     aspect-ratio: auto;
     height: clamp(24rem, 116vw, 28rem);
     border-radius: 8rem 8rem 1.4rem 1.4rem;
