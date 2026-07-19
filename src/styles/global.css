@@ -873,7 +873,7 @@ img {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(circle at 50% -12%, rgba(242, 213, 138, 0.24), transparent 42%);
+  background: radial-gradient(circle at 50% 20%, rgba(242, 213, 138, 0.18), transparent 46%);
   pointer-events: none;
 }
 
@@ -926,68 +926,15 @@ img {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.15rem;
-}
-
-.ss-rentals {
-  margin-top: clamp(2rem, 4vw, 3rem);
-  padding-top: clamp(1.75rem, 3vw, 2.25rem);
-  border-top: 1px solid var(--ss-border);
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: clamp(1.25rem, 4vw, 3rem);
-  align-items: start;
-}
-
-.ss-rentals-label {
-  font-family: var(--ss-font-display);
-  font-style: italic;
-  font-size: 1.35rem;
-  color: var(--ss-gold-dark);
-}
-
-.ss-rentals-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(1.25rem, 3vw, 2.5rem);
-}
-
-.ss-rental {
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.ss-rental-name {
-  font-family: var(--ss-font-display);
-  font-size: 1.2rem;
-  color: var(--ss-text);
-}
-
-.ss-rental-desc {
-  color: var(--ss-text-muted);
-  font-size: 0.95rem;
-  line-height: 1.65;
-}
-
-@media (max-width: 640px) {
-  .ss-rentals {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  .ss-rentals-list {
-    grid-template-columns: 1fr;
-  }
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.15rem;
 }
 
 .ss-service {
   position: relative;
+  flex: 0 1 calc(33.333% - 0.78rem);
   padding: 2.1rem 1.8rem 1.9rem;
   border: 1px solid var(--ss-border-soft);
   border-radius: var(--ss-radius-md);
@@ -1086,14 +1033,14 @@ img {
 }
 
 @media (max-width: 900px) {
-  .ss-services-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .ss-service {
+    flex-basis: calc(50% - 0.58rem);
   }
 }
 
 @media (max-width: 560px) {
-  .ss-services-grid {
-    grid-template-columns: 1fr;
+  .ss-service {
+    flex-basis: 100%;
   }
 }
 
@@ -1103,9 +1050,7 @@ img {
   }
 }
 
-/* ==========================================================================
-   Event bands
-   ========================================================================== */
+/* Event bands */
 
 .ss-events {
   position: relative;
