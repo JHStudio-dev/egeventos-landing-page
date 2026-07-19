@@ -221,7 +221,7 @@ img {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url("/Fundador 2.png") 34% 24% / cover no-repeat;
+  background: url("/fundador-2.webp") 34% 24% / cover no-repeat;
   transform: scale(1.06);
   transform-origin: 34% 30%;
   will-change: transform;
@@ -1149,13 +1149,13 @@ img {
 }
 
 .ss-band-bodas {
-  background-image: url("/bodaaa.jpg");
+  background-image: url("/boda-2.webp");
 }
 .ss-band-graduaciones {
-  background-image: url("/graduacion.png");
+  background-image: url("/graduacion.webp");
 }
 .ss-band-sociales {
-  background-image: url("/Social.png");
+  background-image: url("/social-1.webp");
 }
 .ss-band-empresariales {
   background-image: url("/event-empresariales.webp");
@@ -1371,7 +1371,7 @@ img {
 }
 
 .ss-shot-1 {
-  background-image: url("/boda.jpg");
+  background-image: url("/boda.webp");
 }
 .ss-shot-2 {
   background-image: url("/gallery-2.webp");
@@ -1397,7 +1397,7 @@ img {
   background-image: url("/gallery-8.webp");
 }
 .ss-shot-9 {
-  background-image: url("/Galery 9.png");
+  background-image: url("/galeria-9.webp");
 }
 
 @media (min-width: 901px) {
