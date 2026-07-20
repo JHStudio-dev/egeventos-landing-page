@@ -1168,9 +1168,6 @@ img {
 .ss-band-sociales .ss-band-photo::before {
   background-image: url("/social-1.webp");
 }
-.ss-band-empresariales .ss-band-photo::before {
-  background-image: url("/event-empresariales.webp");
-}
 
 @media (max-width: 820px) {
   .ss-band {
