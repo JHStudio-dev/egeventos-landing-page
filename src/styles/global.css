@@ -221,7 +221,7 @@ img {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url("/fundador-2.webp") 34% 24% / cover no-repeat;
+  background: url("/fundador-3.webp") 40% 28% / cover no-repeat;
   transform: scale(1.06);
   transform-origin: 34% 30%;
   will-change: transform;
@@ -1751,9 +1751,9 @@ img {
 }
 
 .ss-crew-media {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 0.85rem;
-  aspect-ratio: 8 / 7;
 }
 
 .ss-crew-strip {
@@ -1795,8 +1795,7 @@ img {
 }
 
 .ss-crew-fig {
-  flex: 1;
-  min-height: 0;
+  aspect-ratio: 4 / 5;
   position: relative;
   margin: 0;
   overflow: hidden;
@@ -1873,12 +1872,7 @@ img {
 
 @media (max-width: 560px) {
   .ss-crew-media {
-    flex-direction: column;
-    aspect-ratio: auto;
-  }
-
-  .ss-crew-fig {
-    flex: none;
+    grid-template-columns: 1fr;
   }
 
   .ss-crew-col-main .ss-crew-fig {
