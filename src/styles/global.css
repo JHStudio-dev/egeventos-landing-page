@@ -1203,12 +1203,12 @@ img {
   }
 
   .ss-band-photo::before {
-    animation: ss-band-kenburns 18s ease-in-out infinite alternate;
+    animation: ss-band-kenburns 15s ease-in-out infinite alternate;
   }
 
   @keyframes ss-band-kenburns {
     from { transform: scale(1.06); }
-    to { transform: scale(1.18) translate(-2%, -2%); }
+    to { transform: scale(1.22) translate(-2.8%, -2.8%); }
   }
 }
 
