@@ -301,6 +301,7 @@ const jsonLd = {
 
         <div class="ss-bands">
           <article class="ss-band ss-band-bodas">
+            <div class="ss-band-photo" aria-hidden="true"></div>
             <div class="ss-band-content">
               <span class="ss-band-index">01</span>
               <h3 class="ss-band-name">Bodas</h3>
@@ -311,6 +312,7 @@ const jsonLd = {
           </article>
 
           <article class="ss-band ss-band-graduaciones">
+            <div class="ss-band-photo" aria-hidden="true"></div>
             <div class="ss-band-content">
               <span class="ss-band-index">02</span>
               <h3 class="ss-band-name">Graduaciones</h3>
@@ -321,6 +323,7 @@ const jsonLd = {
           </article>
 
           <article class="ss-band ss-band-sociales">
+            <div class="ss-band-photo" aria-hidden="true"></div>
             <div class="ss-band-content">
               <span class="ss-band-index">03</span>
               <h3 class="ss-band-name">Celebraciones sociales</h3>
@@ -331,6 +334,7 @@ const jsonLd = {
           </article>
 
           <article class="ss-band ss-band-empresariales">
+            <div class="ss-band-photo" aria-hidden="true"></div>
             <div class="ss-band-content">
               <span class="ss-band-index">04</span>
               <h3 class="ss-band-name">Eventos empresariales</h3>
@@ -695,6 +699,23 @@ const jsonLd = {
           { threshold: 0 }
         );
         io.observe(hero);
+      }
+
+      const bands = document.querySelectorAll(".ss-band");
+      if (bands.length) {
+        document.documentElement.classList.add("ss-anim-ready");
+        const bo = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add("is-in");
+                bo.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+        bands.forEach((b) => bo.observe(b));
       }
 
       const menu = document.getElementById("ss-mobile-menu");
