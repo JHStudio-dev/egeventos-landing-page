@@ -1089,9 +1089,15 @@ img {
   position: absolute;
   inset: -8% 0;
   z-index: 0;
+  will-change: transform;
+}
+
+.ss-band-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-position: center;
-  will-change: transform;
 }
 
 .ss-band::after {
@@ -1154,16 +1160,16 @@ img {
   text-shadow: 0 1px 10px rgba(250, 245, 236, 0.6);
 }
 
-.ss-band-bodas .ss-band-photo {
+.ss-band-bodas .ss-band-photo::before {
   background-image: url("/boda-2.webp");
 }
-.ss-band-graduaciones .ss-band-photo {
+.ss-band-graduaciones .ss-band-photo::before {
   background-image: url("/graduacion.webp");
 }
-.ss-band-sociales .ss-band-photo {
+.ss-band-sociales .ss-band-photo::before {
   background-image: url("/social-1.webp");
 }
-.ss-band-empresariales .ss-band-photo {
+.ss-band-empresariales .ss-band-photo::before {
   background-image: url("/event-empresariales.webp");
 }
 
@@ -1176,7 +1182,7 @@ img {
 @media (prefers-reduced-motion: no-preference) {
   .ss-anim-ready .ss-band-content {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(26px);
     transition:
       opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
       transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1195,31 +1201,29 @@ img {
   .ss-band.is-in .ss-band-photo {
     opacity: 1;
   }
+
+  .ss-band-photo::before {
+    animation: ss-band-kenburns 18s ease-in-out infinite alternate;
+  }
+
+  @keyframes ss-band-kenburns {
+    from { transform: scale(1.06); }
+    to { transform: scale(1.18) translate(-2%, -2%); }
+  }
 }
 
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .ss-band-photo {
-      animation: ss-band-parallax linear both;
+      animation-name: ss-band-parallax;
+      animation-fill-mode: both;
+      animation-timing-function: linear;
       animation-timeline: view();
     }
 
     @keyframes ss-band-parallax {
-      from { transform: translateY(-6%); }
-      to { transform: translateY(6%); }
-    }
-  }
-}
-
-@supports not (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .ss-band-photo {
-      animation: ss-band-kenburns 20s ease-in-out infinite alternate;
-    }
-
-    @keyframes ss-band-kenburns {
-      from { transform: scale(1.05); }
-      to { transform: scale(1.14) translateY(-2%); }
+      from { transform: translateY(-7%); }
+      to { transform: translateY(7%); }
     }
   }
 }
