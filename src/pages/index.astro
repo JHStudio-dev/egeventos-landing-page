@@ -13,6 +13,10 @@ const facebook = "https://www.facebook.com/egevetos";
 const whatsappMsg = "Hola EG Eventos, vi su página y me gustaría cotizar un evento.";
 const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsappMsg)}`;
 
+const studioWhatsapp = "50433465918";
+const studioWhatsappMsg = "Hola Scale Studio, vi la página de EG Eventos y me interesa una página web.";
+const studioWhatsappLink = `https://wa.me/${studioWhatsapp}?text=${encodeURIComponent(studioWhatsappMsg)}`;
+
 const siteUrl = "https://egeventoshn.com";
 const pageTitle = "EG Eventos | Wedding & Events Planners en Tegucigalpa";
 const pageDesc =
@@ -668,7 +672,7 @@ const jsonLd = {
 
       <div class="ss-footer-bottom">
         <span>© 2026 EG Eventos</span>
-        <span>Desarrollado por Scale Studio</span>
+        <span>Desarrollado por <a href={studioWhatsappLink} target="_blank" rel="noopener" class="ss-credit-link">Scale Studio</a></span>
       </div>
     </footer>
 

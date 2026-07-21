@@ -1496,11 +1496,8 @@ img {
   position: relative;
   overflow: hidden;
   padding: clamp(5rem, 9vw, 8rem) 1.5rem;
-  background-color: #080605;
-  background-image: url("/event-cta.webp");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  border-top: 1px solid var(--ss-border-soft);
+  background: linear-gradient(180deg, var(--ss-paper) 0%, var(--ss-paper-deep) 100%);
 }
 
 .ss-cta::before {
@@ -1508,7 +1505,7 @@ img {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(180deg, rgba(5, 4, 3, 0.82) 0%, rgba(5, 4, 3, 0.68) 50%, rgba(5, 4, 3, 0.9) 100%);
+  background: radial-gradient(70% 60% at 50% 0%, rgba(194, 143, 44, 0.1), transparent 70%);
   pointer-events: none;
 }
 
@@ -1522,21 +1519,19 @@ img {
   border: 1px solid var(--ss-border);
   border-radius: var(--ss-radius-lg);
   background:
-    radial-gradient(circle at 50% 0%, rgba(214, 168, 79, 0.18), transparent 60%),
-    linear-gradient(180deg, rgba(10, 8, 6, 0.74), rgba(8, 6, 4, 0.6));
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+    radial-gradient(circle at 50% 0%, rgba(194, 143, 44, 0.1), transparent 62%),
+    linear-gradient(180deg, #fffdf8, #f6eedd);
   box-shadow:
-    0 30px 90px rgba(0, 0, 0, 0.55),
-    0 0 90px rgba(214, 168, 79, 0.08),
-    inset 0 1px 0 rgba(255, 247, 232, 0.08);
+    0 30px 80px rgba(60, 42, 15, 0.16),
+    0 0 70px rgba(194, 143, 44, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .ss-cta-card::before {
   content: "";
   position: absolute;
   inset: 0.7rem;
-  border: 1px solid rgba(242, 213, 138, 0.22);
+  border: 1px solid rgba(138, 94, 28, 0.22);
   border-radius: calc(var(--ss-radius-lg) - 0.5rem);
   pointer-events: none;
 }
@@ -1553,7 +1548,7 @@ img {
 
 .ss-cta-title em {
   font-style: italic;
-  color: var(--ss-gold-light);
+  color: var(--ss-gold-dark);
 }
 
 .ss-cta-text {
@@ -1575,12 +1570,12 @@ img {
   font-family: var(--ss-font-display);
   font-size: 1.5rem;
   letter-spacing: 0.04em;
-  color: var(--ss-gold-light);
+  color: var(--ss-gold-dark);
   transition: color var(--ss-transition);
 }
 
 .ss-cta-phone:hover {
-  color: var(--ss-ivory);
+  color: var(--ss-ink);
 }
 
 .ss-cta-email {
@@ -1593,7 +1588,7 @@ img {
 }
 
 .ss-cta-email:hover {
-  color: var(--ss-gold-light);
+  color: var(--ss-gold-dark);
 }
 
 .ss-cta-socials {
@@ -1612,7 +1607,7 @@ img {
 }
 
 .ss-cta-socials a:hover {
-  color: var(--ss-gold-light);
+  color: var(--ss-gold-dark);
 }
 
 @media (max-width: 820px), (prefers-reduced-motion: reduce) {
@@ -1699,6 +1694,16 @@ img {
   color: var(--ss-text-muted);
   font-size: 0.8rem;
   letter-spacing: 0.02em;
+}
+
+.ss-credit-link {
+  color: var(--ss-gold-dark);
+  font-weight: 500;
+  transition: color var(--ss-transition);
+}
+
+.ss-credit-link:hover {
+  color: var(--ss-ink);
 }
 
 @media (max-width: 720px) {
@@ -1873,17 +1878,6 @@ img {
 }
 
 /* About */
-
-/* Dark card tokens */
-.ss-cta-card {
-  --ss-text: var(--ss-ivory);
-  --ss-text-soft: var(--ss-cream);
-  --ss-text-muted: var(--ss-muted);
-  --ss-gold-dark: var(--ss-gold-light);
-  --ss-gold-deep: var(--ss-gold-light);
-  --ss-border: rgba(242, 213, 138, 0.3);
-  --ss-border-soft: rgba(255, 247, 232, 0.14);
-}
 
 .ss-about {
   position: relative;
