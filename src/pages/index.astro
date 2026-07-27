@@ -84,7 +84,20 @@ const jsonLd = {
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
-    <link rel="preload" as="image" href="/fundador-3.webp" fetchpriority="high" />
+    <link
+      rel="preload"
+      as="image"
+      href="/fundador-portada-movil.webp"
+      media="(max-width: 859px) and (orientation: portrait)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/fundador-portada.webp"
+      media="(min-width: 860px), (orientation: landscape)"
+      fetchpriority="high"
+    />
     <link rel="preload" as="image" href="/logo.webp" fetchpriority="high" />
     <link rel="preload" as="image" href="/event-bodas.webp" />
   </head>

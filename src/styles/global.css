@@ -221,9 +221,8 @@ img {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url("/fundador-3.webp") 40% 28% / cover no-repeat;
-  transform: scale(1.06);
-  transform-origin: 34% 30%;
+  background: url("/fundador-portada.webp") 50% 15% / cover no-repeat;
+  transform-origin: 50% 30%;
   will-change: transform;
 }
 
@@ -319,6 +318,32 @@ img {
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.75);
 }
 
+/* Portada vertical: encuadre alto y logo centrado en la franja oscura */
+@media (max-width: 859px) and (orientation: portrait) {
+  .ss-cover {
+    /* Alto real de la franja: 16.35% de la foto ya escalada por cover */
+    --ss-cover-band: calc(0.1635 * max(100svh, 100vw * 1.7778));
+  }
+
+  .ss-cover-photo {
+    background-image: url("/fundador-portada-movil.webp");
+    background-position: 50% 0;
+  }
+
+  .ss-cover-inner {
+    padding-top: 0;
+  }
+
+  .ss-cover-logo {
+    height: var(--ss-cover-band);
+    align-items: center;
+  }
+
+  .ss-cover-logo img {
+    height: clamp(3.5rem, calc(var(--ss-cover-band) * 0.52), 6.75rem);
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .ss-cover-photo {
     animation: ss-cover-kenburns 28s ease-in-out infinite alternate;
@@ -367,8 +392,8 @@ img {
   }
 
   @keyframes ss-cover-kenburns {
-    0% { transform: scale(1.06) translate(0, 0); }
-    100% { transform: scale(1.15) translate(-1.6%, -1.8%); }
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.05) translate(-1%, -1.2%); }
   }
 
   @keyframes ss-cover-grain-shift {
@@ -377,19 +402,8 @@ img {
   }
 }
 
-@media (max-width: 560px) {
-  .ss-cover-photo {
-    background-position: 32% 22%;
-  }
-}
-
 /* Split editorial */
 @media (min-width: 860px) {
-  .ss-cover-photo {
-    background-position: 50% 30%;
-    transform-origin: 40% 34%;
-  }
-
   .ss-cover-scrim {
     background:
       linear-gradient(
